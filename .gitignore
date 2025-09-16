@@ -1,0 +1,19 @@
+# --- Unity caches & build artifacts (never commit)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+# --- Unity Collaborate cruft
+Packages/com.unity.collab-proxy/
+
+# --- IDE / generated
+.vscode/
+*.csproj
+*.sln
+*.user
+*.unityproj
