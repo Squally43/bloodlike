@@ -1,0 +1,16 @@
+{
+    "name": "WH.Gameplay",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a0ae38ed06a78684fbc20c3331e99d17"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
