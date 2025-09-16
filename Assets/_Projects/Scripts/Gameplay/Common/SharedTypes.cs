@@ -61,7 +61,7 @@ namespace WH.Gameplay
         [Tooltip("For ApplyStatus/RemoveStatus.")]
         public StatusKind status;
     }
-
+    [Serializable]
     public struct EnemyIntentStep
     {
         public IntentType type;
