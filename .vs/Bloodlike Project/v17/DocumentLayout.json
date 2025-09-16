@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity Projects\\Bloodlike Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\common\\sharedtypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\common\\sharedtypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|d:\\unity projects\\bloodlike project\\assets\\_projects\\scripts\\gameplay\\enemies\\enemydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\enemies\\enemydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\cards\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\cards\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnemyData.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyData.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyData.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyData.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyData.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAkwB4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T16:48:14.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CardData.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwCwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T16:47:32.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SharedTypes.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Common\\SharedTypes.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Common\\SharedTypes.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Common\\SharedTypes.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Common\\SharedTypes.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAkwD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T16:46:27.894Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

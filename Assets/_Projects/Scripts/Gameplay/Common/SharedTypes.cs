@@ -62,7 +62,6 @@ namespace WH.Gameplay
         public StatusKind status;
     }
 
-    [Serializable]
     public struct EnemyIntentStep
     {
         public IntentType type;
