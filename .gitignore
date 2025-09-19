@@ -12,7 +12,8 @@ UserSettings/
 Packages/com.unity.collab-proxy/
 
 # --- IDE / generated
-.vscode/
+*.vs/
+*.vscode/
 *.csproj
 *.sln
 *.user
