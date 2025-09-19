@@ -1,172 +1,242 @@
-using System;
+﻿using System;
 using UnityEngine;
 using WH.Gameplay.Enemies;
 
 namespace WH.Gameplay.Systems
 {
-    /// <summary>Controls turn order and resolves enemy intents.</summary>
+    /// <summary>
+    /// Minimal, event-driven battle loop.
+    /// </summary>
     [DisallowMultipleComponent]
     public sealed class TurnManager : MonoBehaviour
     {
-        [SerializeField] private PulseManager _pulse;
-        [SerializeField] private EnemyAI _enemyAI;
-
-        [Header("Runtime combatants (auto-found if unassigned)")]
-        [SerializeField] private CombatantState _player;
-        [SerializeField] private CombatantState _enemy;
-
+        // ---------- Events ----------
         public event Action OnPlayerTurnStarted;
         public event Action OnPlayerTurnEnded;
         public event Action OnEnemyTurnStarted;
         public event Action OnEnemyTurnEnded;
         public event Action<bool> OnBattleEnded;
 
-        private EnemyData _enemyData;
-        private int _roundIndex;
-        private bool _battleActive;
+        // ---------- Config ----------
+        [Header("Starting Values")]
 
-        public void StartBattle(EnemyData enemyData)
+        [SerializeField] private int playerStartingHp = 60;
+        [SerializeField] private int enemyStartingHpFallback = 40;
+
+        [Header("Services")]
+        [SerializeField] private PulseManager pulse;   // ✅ the shared Pulse instance
+        public PulseManager Pulse => pulse;            // (keep this property)
+                                                       // assign in inspector
+        [SerializeField] private System.Random rngForEnemy = new System.Random(12345);
+
+        // ---------- Runtime state ----------
+        [Serializable]
+        public class CombatantState
         {
-            _enemyData = enemyData;
-            _roundIndex = 1;
-            _battleActive = true;
+            public string Name = "Unknown";
+            public int MaxHp;
+            public int CurrentHp;
+            public int Block;
+        }
 
-            // Lazy find combatants
-            if (_player == null || _enemy == null)
-            {
-                var all = FindObjectsByType<CombatantState>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-                foreach (var c in all)
-                {
-                    if (c.IsPlayer) _player ??= c;
-                    else _enemy ??= c;
-                }
-            }
+        [Header("Public States (for HUDs)")]
+        public CombatantState PlayerState { get; private set; } = new CombatantState { Name = "Player" };
+        public CombatantState EnemyState { get; private set; } = new CombatantState { Name = "Enemy" };
 
-            if (_enemyAI == null)
-                _enemyAI = FindAnyObjectByType<EnemyAI>(FindObjectsInactive.Include);
+        public bool BattleRunning { get; private set; }
+        private EnemyData activeEnemyData;
+        private int roundIndex = 1; // 1-based, cycles enemy intents
 
-            // Init HP
-            _player?.Init(_player.MaxHp);                     // player decides own MaxHp in inspector
-            _enemy?.Init(_enemyData != null ? _enemyData.MaxHp : 30);
+        // =========================================================
+        //                       PUBLIC API
+        // =========================================================
+        public void StartBattle(EnemyData enemy)
+        {
+            BattleRunning = true;
+            activeEnemyData = enemy;
+            roundIndex = 1;
 
-            if (_enemyAI != null) _enemyAI.SetData(_enemyData);
+            // init player
+            PlayerState.MaxHp = Mathf.Max(1, playerStartingHp);
+            PlayerState.CurrentHp = PlayerState.MaxHp;
+            PlayerState.Block = 0;
 
-            Debug.Log($"[Turn] Battle start vs {_enemyData.DisplayName}");
-            StartPlayerTurn();
+            // init enemy
+            EnemyState.Name = enemy ? (string.IsNullOrEmpty(enemy.name) ? "Enemy" : enemy.name) : "Enemy";
+            int enemyMax = GetEnemyMaxHp(enemy, enemyStartingHpFallback);
+            EnemyState.MaxHp = Mathf.Max(1, enemyMax);
+            EnemyState.CurrentHp = EnemyState.MaxHp;
+            EnemyState.Block = 0;
+
+            // pulse + first turn
+            if (pulse) pulse.ResetForNewTurn();
+            OnPlayerTurnStarted?.Invoke();
         }
 
         public void EndPlayerTurn()
         {
-            if (!_battleActive) return;
-
-            // End of player turn hooks
-            _player?.ClearBlock();
-
+            if (!BattleRunning) return;
             OnPlayerTurnEnded?.Invoke();
-            Debug.Log("[Turn] Player turn end");
-
-            StartEnemyTurn();
+            BeginEnemyTurn();
         }
 
-        private void StartPlayerTurn()
+        // =========================================================
+        //                   TURN FLOW (private)
+        // =========================================================
+        private void BeginPlayerTurn()
         {
-            if (!_battleActive) return;
-
-            _pulse.ResetForNewTurn();
+            if (!BattleRunning) return;
+            PlayerState.Block = 0;                 // player block clears on their turn
+            if (pulse != null) pulse.ResetForNewTurn();
             OnPlayerTurnStarted?.Invoke();
-            Debug.Log($"[Turn] Player turn start - Round {_roundIndex}");
         }
 
-        private void StartEnemyTurn()
+        private void BeginEnemyTurn()
         {
-            if (!_battleActive) return;
+            if (!BattleRunning) return;
 
             OnEnemyTurnStarted?.Invoke();
-            Debug.Log("[Turn] Enemy turn start");
 
-            if (_enemyAI == null)
-                _enemyAI = FindAnyObjectByType<EnemyAI>(FindObjectsInactive.Include);
+            ResolveEnemyIntentOnce();
 
-            if (_enemyAI != null)
-            {
-                // Select and resolve one intent
-                _enemyAI.SelectNextIntent();
-                ResolveEnemyIntent();
-            }
-            else
-            {
-                Debug.LogWarning("[Turn] EnemyAI not found. Skipping intent.");
-            }
+            EnemyState.Block = 0;                  // enemy block clears at end of enemy turn
+            ClampHp(PlayerState);
+            ClampHp(EnemyState);
 
-            // End of enemy turn hooks
-            _enemy?.ClearBlock();
+            if (CheckBattleEnd()) return;
 
             OnEnemyTurnEnded?.Invoke();
-            Debug.Log("[Turn] Enemy turn end");
-
-            EvaluateBattleEnd();
-            if (!_battleActive) return;
-
-            _roundIndex++;
-            StartPlayerTurn();
+            roundIndex++;
+            BeginPlayerTurn();
         }
 
-        private void ResolveEnemyIntent()
+        // =========================================================
+        //                ENEMY INTENT (very simple MVP)
+        // =========================================================
+        private void ResolveEnemyIntentOnce()
         {
-            if (_enemyData == null) return;
-
-            if (_enemyData.Intents.Count > 0)
+            if (activeEnemyData == null || activeEnemyData.Intents == null || activeEnemyData.Intents.Count == 0)
             {
-                var i = (_roundIndex - 1) % _enemyData.Intents.Count;
-                var chosen = _enemyData.Intents[i];
+                DealDamageToPlayer(5); // simple fallback so loop is visible
+                return;
+            }
 
-                switch (chosen.type)
-                {
-                    case IntentType.Attack:
-                        for (int t = 0; t < Mathf.Max(1, chosen.times); t++)
-                            _player?.ApplyDamage(chosen.value);
-                        break;
+            var intents = activeEnemyData.Intents;
+            int idx = Mathf.Clamp((roundIndex - 1) % intents.Count, 0, intents.Count - 1);
+            var step = intents[idx];
 
-                    case IntentType.MultiAttack:
-                        for (int t = 0; t < Mathf.Max(1, chosen.times); t++)
-                            _player?.ApplyDamage(chosen.value);
-                        break;
+            string type = GetEnumName(step, "type");
+            int value = TryGetInt(step, "value");
+            int times = Mathf.Max(1, TryGetInt(step, "times"));
+            string status = GetString(step, "status");
 
-                    case IntentType.Block:
-                        _enemy?.GainBlock(chosen.value);
-                        break;
-
-                    case IntentType.ApplyStatus:
-                        Debug.Log($"[Status] Enemy applies {chosen.status} x{chosen.value} (stub)");
-                        break;
-
-                    default:
-                        break;
-                }
+            switch (type)
+            {
+                case "Attack":
+                case "MultiAttack":
+                    for (int i = 0; i < times; i++) DealDamageToPlayer(value);
+                    break;
+                case "Block":
+                    EnemyState.Block += Mathf.Max(0, value);
+                    break;
+                case "ApplyStatus":
+                    // hook up statuses later
+                    break;
+                default:
+                    DealDamageToPlayer(Mathf.Max(1, value));
+                    break;
             }
         }
 
-
-        private void EvaluateBattleEnd()
+        // =========================================================
+        //                    DAMAGE / RULES HELPERS
+        // =========================================================
+        public void DealDamageToEnemy(int rawDamage)
         {
-            if (!_battleActive) return;
-            if (_player != null && _player.IsDead) { ForceBattleEnd(false); return; }
-            if (_enemy != null && _enemy.IsDead) { ForceBattleEnd(true); return; }
+            if (!BattleRunning) return;
+            ApplyDamage(rawDamage, EnemyState);
+            if (CheckBattleEnd()) return;
         }
 
-        public void ForceBattleEnd(bool playerWon)
+        public void DealDamageToPlayer(int rawDamage)
         {
-            if (!_battleActive) return;
-            _battleActive = false;
-            OnBattleEnded?.Invoke(playerWon);
-            Debug.Log($"[Turn] Battle end. PlayerWon={playerWon}");
+            if (!BattleRunning) return;
+            ApplyDamage(rawDamage, PlayerState);
         }
 
-        // Expose combatants for other systems
-        public CombatantState PlayerState => _player;
-        public CombatantState EnemyState => _enemy;
+        private static void ApplyDamage(int rawDamage, CombatantState target)
+        {
+            int d = Mathf.Max(0, rawDamage);
+            int absorbed = Mathf.Min(target.Block, d);
+            target.Block -= absorbed;
+            d -= absorbed;
+            if (d > 0) target.CurrentHp = Mathf.Max(0, target.CurrentHp - d);
+        }
+
+        private bool CheckBattleEnd()
+        {
+            if (EnemyState.CurrentHp <= 0) { BattleRunning = false; OnBattleEnded?.Invoke(true); return true; }
+            if (PlayerState.CurrentHp <= 0) { BattleRunning = false; OnBattleEnded?.Invoke(false); return true; }
+            return false;
+        }
+
+        private static void ClampHp(CombatantState s)
+        {
+            if (s.MaxHp <= 0) s.MaxHp = 1;
+            if (s.CurrentHp > s.MaxHp) s.CurrentHp = s.MaxHp;
+            if (s.CurrentHp < 0) s.CurrentHp = 0;
+            if (s.Block < 0) s.Block = 0;
+        }
+
+        private static int GetEnemyMaxHp(object enemyData, int fallback)
+        {
+            if (enemyData == null) return fallback;
+            int v = TryGetInt(enemyData, "MaxHp");
+            if (v <= 0) v = TryGetInt(enemyData, "BaseHp");
+            if (v <= 0) v = TryGetInt(enemyData, "Health");
+            if (v <= 0) v = TryGetInt(enemyData, "Hp");
+            return v > 0 ? v : fallback;
+        }
+
+        // =========================================================
+        //                  Reflection helpers
+        // =========================================================
+        private static int TryGetInt(object obj, string name)
+        {
+            if (obj == null) return 0;
+            var t = obj.GetType();
+            var p = t.GetProperty(name);
+            if (p != null && p.PropertyType == typeof(int)) return (int)p.GetValue(obj);
+            var f = t.GetField(name);
+            if (f != null && f.FieldType == typeof(int)) return (int)f.GetValue(obj);
+            return 0;
+        }
+
+        private static string GetString(object obj, string name)
+        {
+            if (obj == null) return null;
+            var t = obj.GetType();
+            var p = t.GetProperty(name);
+            if (p != null && p.PropertyType == typeof(string)) return (string)p.GetValue(obj);
+            var f = t.GetField(name);
+            if (f != null && f.FieldType == typeof(string)) return (string)f.GetValue(obj);
+            return null;
+        }
+
+        private static string GetEnumName(object obj, string name)
+        {
+            if (obj == null) return null;
+            var t = obj.GetType();
+            var p = t.GetProperty(name);
+            if (p != null && p.PropertyType.IsEnum) return Enum.GetName(p.PropertyType, p.GetValue(obj));
+            var f = t.GetField(name);
+            if (f != null && f.FieldType.IsEnum) return Enum.GetName(f.FieldType, f.GetValue(obj));
+            return null;
+        }
     }
 }
+
+
 
 
 

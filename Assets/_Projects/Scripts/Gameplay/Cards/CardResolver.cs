@@ -1,127 +1,89 @@
-using System;
-using UnityEngine;
-using WH.Gameplay.Cards;
-using WH.Gameplay.Cards.Piles;
+﻿using UnityEngine;
 using WH.Gameplay.Systems;
 
 namespace WH.Gameplay.Cards
 {
-    /// <summary>Resolves CardData effects in order. No visuals yet.</summary>
-    [DisallowMultipleComponent]
+    /// <summary>
+    /// Resolves card plays. Uses TurnManager for damage and modifies Block directly.
+    /// Minimal MVP: if a card has Damage > 0, hit the enemy; if Block > 0, give it to player.
+    /// Costs are paid via PulseManager.
+    /// </summary>
     public sealed class CardResolver : MonoBehaviour
     {
-        [SerializeField] private PulseManager _pulse;
-
-        // Optional scene refs. If unassigned, auto-find at Awake.
-        [SerializeField] private TurnManager _turns;
-
-        private CombatantState _player;
-        private CombatantState _enemy;
-
-        public event Action<CardData> OnCardPlayed;
+        [Header("Services")]
+        [SerializeField] private TurnManager _turns;   // assign in inspector or auto-find
+        [SerializeField] private PulseManager _pulse;  // assign in inspector or auto-find
 
         private void Awake()
         {
-            if (_pulse == null)
-                _pulse = FindAnyObjectByType<PulseManager>(FindObjectsInactive.Include);
-
             if (_turns == null)
                 _turns = FindAnyObjectByType<TurnManager>(FindObjectsInactive.Include);
-
-            if (_turns != null)
-            {
-                _player = _turns.PlayerState ?? FindAnyObjectByType<CombatantState>(FindObjectsInactive.Include | FindObjectsInactive.Exclude);
-                _enemy = _turns.EnemyState ?? _player; // will be corrected below
-            }
-
-            if (_player == null || _enemy == null)
-            {
-                var all = FindObjectsByType<CombatantState>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-                foreach (var c in all)
-                {
-                    if (c.IsPlayer) _player = c;
-                    else _enemy = c;
-                }
-            }
+            if (_pulse == null)
+                _pulse = FindAnyObjectByType<PulseManager>(FindObjectsInactive.Include);
         }
 
+        /// <summary>
+        /// Try to play a card. Returns true if the play resolved (cost paid and effects applied).
+        /// </summary>
         public bool TryPlay(CardData card)
         {
-            if (card == null) return false;
-            if (!_pulse.TrySpend(card.CostPulse))
+            if (card == null || _turns == null) return false;
+
+            // Use the SAME PulseManager as TurnManager
+            var pm = _turns.Pulse != null ? _turns.Pulse : _pulse;
+
+            int cost = card.CostPulse;   // ✅ your schema
+            int dmg = card.BaseDamage;  // ✅ your schema
+            int block = card.BaseBlock;   // ✅ your schema
+
+            // Gate + spend atomically
+            if (cost > 0)
             {
-                Debug.Log("[Card] Not enough Pulse");
-                return false;
+                if (pm == null) { Debug.LogWarning("[Resolver] No PulseManager set."); return false; }
+                if (!pm.TrySpend(cost)) return false;
             }
 
-            ResolveEffects(card);
+            bool didSomething = false;
 
-            OnCardPlayed?.Invoke(card);
+            if (dmg > 0)
+            {
+                _turns.DealDamageToEnemy(dmg);
+                didSomething = true;
+            }
 
-            // After effects, check win/lose
-            _turns?.GetType().GetMethod("EvaluateBattleEnd", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                   ?.Invoke(_turns, null);
+            if (block > 0 && _turns.PlayerState != null)
+            {
+                _turns.PlayerState.Block += block;
+                didSomething = true;
+            }
 
-            Debug.Log($"[Card] Played {card.DisplayName}");
+            // If you have an effects list you want to process next, you can iterate card.Effects here.
+
+            // Even if a card has no base numbers, we still succeed so the UI flow continues.
+            if (!didSomething)
+                Debug.Log($"[Resolver] Played '{card.DisplayName}' – no base effects (BaseDamage/BaseBlock both 0).");
+
             return true;
         }
 
-        private void ResolveEffects(CardData card)
+
+        // Helper overload to probe several names
+        private static int GetInt(object obj, params string[] names)
         {
-            foreach (var eff in card.Effects)
+            if (obj == null || names == null) return 0;
+            var t = obj.GetType();
+            foreach (var n in names)
             {
-                switch (eff.type)
-                {
-                    case CardEffectType.Damage:
-                        ApplyDamageEffect(eff);
-                        break;
-
-                    case CardEffectType.GainBlock:
-                        ApplyGainBlockEffect(eff);
-                        break;
-
-                    // Add more ops later: Draw, Scry, ApplyStatus, etc.
-                    default:
-                        Debug.Log($"[Card] Effect {eff.type} not implemented yet");
-                        break;
-                }
+                var p = t.GetProperty(n);
+                if (p != null && p.PropertyType == typeof(int)) return (int)p.GetValue(obj);
+                var f = t.GetField(n);
+                if (f != null && f.FieldType == typeof(int)) return (int)f.GetValue(obj);
             }
+            return 0;
         }
 
-        private void ApplyDamageEffect(CardEffectDef eff)
-        {
-            var value = Mathf.Max(0, eff.value);
-            switch (eff.target)
-            {
-                case EffectTarget.Enemy:
-                    _enemy?.ApplyDamage(value);
-                    break;
-                case EffectTarget.Self:
-                    _player?.ApplyDamage(value);
-                    break;
-                default:
-                    Debug.Log("[Card] Damage target not supported in this slice");
-                    break;
-            }
-        }
-
-        private void ApplyGainBlockEffect(CardEffectDef eff)
-        {
-            var value = Mathf.Max(0, eff.value);
-            switch (eff.target)
-            {
-                case EffectTarget.Self:
-                    _player?.GainBlock(value);
-                    break;
-                case EffectTarget.Enemy:
-                    _enemy?.GainBlock(value);
-                    break;
-                default:
-                    Debug.Log("[Card] GainBlock target not supported in this slice");
-                    break;
-            }
-        }
     }
 }
+
 
 

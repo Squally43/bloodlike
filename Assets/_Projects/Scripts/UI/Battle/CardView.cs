@@ -3,7 +3,8 @@ using System.Collections;
 using TMPro;                 // ✅ TMP
 using UnityEngine;
 using UnityEngine.UI;       // ✅ Image, Button
-
+using WH.Gameplay.Cards;
+using WH.UI;
 namespace WH.UI
 {
     /// <summary>Plain UGUI card. Knows only how to present data and click.</summary>
@@ -20,7 +21,7 @@ namespace WH.UI
 
         private Action<CardView> _onClick;
         public UnityEngine.Object BoundData { get; private set; }
-
+        private CardData _data;
         private void Reset()
         {
             _bg = GetComponent<Image>();
@@ -29,19 +30,31 @@ namespace WH.UI
 
         private void Awake()
         {
+            // Defensive fetch in case fields weren’t wired on the prefab
+            if (_bg == null) _bg = GetComponent<Image>();
+            if (_button == null) _button = GetComponent<Button>();
+
             if (_button != null)
+            {
+                _button.onClick.RemoveAllListeners();
                 _button.onClick.AddListener(() => _onClick?.Invoke(this));
+                _button.interactable = true; // ensure clickable on spawn
+            }
         }
 
-        public void Bind(UnityEngine.Object data, string displayName, string rulesLine, int cost, string pulseText, Color bgColor, Action<CardView> onClick)
+
+        public void Bind(CardData data, string displayName, string rulesLine, int cost, string pulseText, Color bgColor, Action<CardView> onClick)
         {
+            _data = data;
             BoundData = data;
             if (_name) _name.text = string.IsNullOrEmpty(displayName) ? "Card" : displayName;
             if (_rules) _rules.text = rulesLine ?? "";
             if (_cost) _cost.text = cost > 0 ? cost.ToString() : "0";
             if (_pulseReadout) _pulseReadout.text = pulseText ?? "";
             if (_bg) _bg.color = bgColor;
-
+            var applier = GetComponent<CardStyleApplier>();
+            if (applier && data != null)
+                applier.ApplyFrom(data);
             _onClick = onClick;
             SetInteractable(true);
         }
@@ -79,6 +92,13 @@ namespace WH.UI
             }
             SetInteractable(false);
         }
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (_bg == null) _bg = GetComponent<Image>();
+            if (_button == null) _button = GetComponent<Button>();
+        }
+#endif
     }
 }
 

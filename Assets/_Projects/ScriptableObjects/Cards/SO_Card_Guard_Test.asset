@@ -22,7 +22,7 @@ MonoBehaviour:
     maxHpCost: 0
     addWoundOnPlay: 0
   baseDamage: 0
-  baseBlock: 0
+  baseBlock: 5
   scryAmount: 0
   drawAmount: 0
   exhaustAfterPlay: 0
@@ -35,3 +35,7 @@ MonoBehaviour:
     status: 0
   sfxOnPlay: {fileID: 0}
   vfxOnPlay: {fileID: 0}
+  baseMaterial: {fileID: 0}
+  overlayMaterial: {fileID: 2100000, guid: a124ca1b6e58fb843af6f44b2b0a0491, type: 2}
+  baseTint: {r: 1, g: 1, b: 1, a: 1}
+  overlayOpacity: 0.2

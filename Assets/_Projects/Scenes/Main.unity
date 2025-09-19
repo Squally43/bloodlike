@@ -1087,7 +1087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 279, y: 107}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &324890504
@@ -1119,8 +1119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68f0c1f5e92e194a9f5987131849a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Cards.CardResolver
-  _pulse: {fileID: 0}
   _turns: {fileID: 0}
+  _pulse: {fileID: 0}
 --- !u!4 &324890506
 Transform:
   m_ObjectHideFlags: 0
@@ -1565,21 +1565,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &509811582
-Transform:
+--- !u!224 &509811582
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509811581}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 1.02, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.14667685}
+  m_LocalScale: {x: 1.4667685, y: 1.4667685, z: 1.4667685}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1624270327}
+  m_Father: {fileID: 1613901482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -961.76013, y: -420.19986}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3018,21 +3022,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1422706638
-Transform:
+--- !u!224 &1422706638
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422706637}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 1.02, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.14667685}
+  m_LocalScale: {x: 1.4667685, y: 1.4667685, z: 1.4667685}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1624270327}
+  m_Father: {fileID: 1613901482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -958.2398, y: -420.19986}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1428394514
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,6 +3664,8 @@ RectTransform:
   - {fileID: 76906831}
   - {fileID: 384235417}
   - {fileID: 1328597712}
+  - {fileID: 509811582}
+  - {fileID: 1422706638}
   m_Father: {fileID: 1580228591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3741,7 +3751,7 @@ MonoBehaviour:
   _turns: {fileID: 0}
   _pulse: {fileID: 0}
   _resolver: {fileID: 324890505}
-  _handRoot: {fileID: 76906831}
+  _handRoot: {fileID: 2099966675}
   _txtPlayerHPBlock: {fileID: 1263272206}
   _txtPulse: {fileID: 1577296993}
   _btnEndTurn: {fileID: 1328597713}
@@ -3749,7 +3759,12 @@ MonoBehaviour:
   _cardPrefab: {fileID: 2672496079643464883, guid: 57c6a28d868459449aa4021fd33ca77b, type: 3}
   _skinColor: {r: 0.945, g: 0.898, b: 0.816, a: 1}
   _eyeColor: {r: 0.961, g: 0.847, b: 0.541, a: 1}
-  _startingDeck: []
+  _startingDeck:
+  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
+  - {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
+  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
+  - {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
+  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
   _startingHand: 5
 --- !u!1 &1624270326
 GameObject:
@@ -3784,8 +3799,6 @@ Transform:
   - {fileID: 585590773}
   - {fileID: 271001747}
   - {fileID: 531328224}
-  - {fileID: 509811582}
-  - {fileID: 1422706638}
   - {fileID: 2114160104}
   - {fileID: 464139721}
   m_Father: {fileID: 300056284}
@@ -4054,6 +4067,8 @@ GameObject:
   - component: {fileID: 2099966675}
   - component: {fileID: 2099966676}
   - component: {fileID: 2099966677}
+  - component: {fileID: 2099966678}
+  - component: {fileID: 2099966679}
   m_Layer: 0
   m_Name: Hand_Container
   m_TagString: Untagged
@@ -4113,13 +4128,95 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099966674}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &2099966678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099966674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55847da392305f149889369cbf6ac4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WH.UI::WH.UI.HandLayoutController
+  cardSpacing: 1
+  fanAngleMax: -10
+  arcHeight: -20
+  hoverExtraGap: 5.2
+  layoutDuration: 0.05
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &2099966679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099966674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104dbd3c5e062444d97d2d369957cebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WH.UI::WH.UI.DealDiscardController
+  deckAnchor: {fileID: 509811582}
+  discardAnchor: {fileID: 1422706638}
+  dealFadeDuration: 0.05
+  dealStagger: 0.25
+  discardDuration: 0.5
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2111550363
 GameObject:
   m_ObjectHideFlags: 0

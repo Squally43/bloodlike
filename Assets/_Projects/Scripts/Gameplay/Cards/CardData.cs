@@ -33,7 +33,11 @@ namespace WH.Gameplay.Cards
         [Header("FX / SFX (optional)")]
         [SerializeField] private AudioClip sfxOnPlay;
         [SerializeField] private GameObject vfxOnPlay;
-
+        [Header("Visuals (optional)")]
+        [SerializeField] private Material baseMaterial;     // e.g., your existing UI/Default clone or stylized mat
+        [SerializeField] private Material overlayMaterial;  // e.g., your holographic/foil shader mat (optional)
+        [SerializeField] private Color baseTint = Color.white;
+        [Range(0, 1)][SerializeField] private float overlayOpacity = 0.6f;
         #region Public API
         /// <summary>Stable content identifier (auto-generated if empty).</summary>
         public string Id => id;
@@ -51,6 +55,10 @@ namespace WH.Gameplay.Cards
         public IReadOnlyList<CardEffectDef> Effects => effects;
         public AudioClip SfxOnPlay => sfxOnPlay;
         public GameObject VfxOnPlay => vfxOnPlay;
+        public Material BaseMaterial => baseMaterial;
+        public Material OverlayMaterial => overlayMaterial;
+        public Color BaseTint => baseTint;
+        public float OverlayOpacity => overlayOpacity;
         #endregion
 
         private void OnValidate()

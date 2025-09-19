@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8861961971550493613}
   - component: {fileID: 1871903405878060957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HeaderRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5522160722663940215}
   - component: {fileID: 4611371366866821119}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 7708034289153605449}
   - component: {fileID: 5995161298835730921}
   - component: {fileID: 650262835101134638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TXT_Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 22221420640571674}
   - component: {fileID: 4033463391417158755}
   - component: {fileID: 7268080498955321972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TXT_Rules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -426,6 +426,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3826269836810766623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1361876719703593462}
+  - component: {fileID: 4687730918543634016}
+  - component: {fileID: 3058937656260944398}
+  m_Layer: 0
+  m_Name: FX_Overlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1361876719703593462
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826269836810766623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1391705489418733021}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4687730918543634016
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826269836810766623}
+  m_CullTransparentMesh: 1
+--- !u!114 &3058937656260944398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826269836810766623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5278804330142944398
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +512,7 @@ GameObject:
   - component: {fileID: 7485406909433123270}
   - component: {fileID: 7294560684027109086}
   - component: {fileID: 5796790974837749572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TXT_PulseReadout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -558,7 +633,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 2.3125954, y: 0, z: 6.330261, w: -0.00081634254}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -576,7 +651,7 @@ GameObject:
   - component: {fileID: 1729288339148573790}
   - component: {fileID: 2810045962985888109}
   - component: {fileID: 4580796183689837067}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TXT_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -659,7 +734,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.4
+  m_fontSize: 14
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -677,7 +752,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 1
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -697,7 +772,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 2.3125954, y: 0, z: 6.330261, w: -0.00081634254}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -733,7 +808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7056236970340093310}
   - component: {fileID: 8621117916577956897}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FooterRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +875,10 @@ GameObject:
   - component: {fileID: 6997395995298410694}
   - component: {fileID: 8806701437108901895}
   - component: {fileID: 2672496079643464883}
-  m_Layer: 0
+  - component: {fileID: 8949105470779413995}
+  - component: {fileID: 3373266414811648538}
+  - component: {fileID: 5199399657110604744}
+  m_Layer: 8
   m_Name: CardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,6 +897,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1361876719703593462}
   - {fileID: 5522160722663940215}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -947,3 +1026,61 @@ MonoBehaviour:
   _rules: {fileID: 7268080498955321972}
   _pulseReadout: {fileID: 5796790974837749572}
   _button: {fileID: 6997395995298410694}
+--- !u!114 &8949105470779413995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909588520002831962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1dca975a57fe14f8d03f34961b15c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WH.UI::WH.UI.CardFxController
+  enableScale: 1
+  hoverScale: 0.95
+  pressScale: 0.9
+  scaleDuration: 0.1
+  enablePunchOnHover: 1
+  punchDegrees: 6
+  punchDuration: 0.12
+  raiseSortingOnHover: 1
+  hoverSortingOrderBoost: 50
+  enableTilt: 1
+  maxTiltX: 15
+  maxTiltY: 20
+  tiltLerp: 15
+  flashDuration: 0.1
+--- !u!225 &3373266414811648538
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909588520002831962}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5199399657110604744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909588520002831962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7c4089507f1e14295b5760543f41ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WH.UI::WH.UI.CardStyleApplier
+  targetImage: {fileID: 995797856064491960}
+  overlayImage: {fileID: 3058937656260944398}
+  defaultBaseMaterial: {fileID: 0}
+  defaultOverlayMaterial: {fileID: 0}
+  defaultBaseTint: {r: 0.754717, g: 0.6301175, b: 0.6301175, a: 1}
+  defaultOverlayOpacity: 0.611
+  previewCard: {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
+  livePreview: 1

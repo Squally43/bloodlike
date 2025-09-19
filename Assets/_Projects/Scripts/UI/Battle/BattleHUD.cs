@@ -6,6 +6,7 @@ using UnityEngine.UI;               // ✅ Button
 using WH.Gameplay.Cards;
 using WH.Gameplay.Systems;
 using WH.Gameplay.Enemies;
+using WH.UI;
 
 namespace WH.UI
 {
@@ -18,7 +19,9 @@ namespace WH.UI
         [SerializeField] private CardResolver _resolver;
 
         [Header("UI Roots (your current scene)")]
-        [SerializeField] private Transform _handRoot;            // UI_HandRow
+        [SerializeField] private Transform _handRoot;
+        HandLayoutController _handLayout;
+        DealDiscardController _dealDiscard;// UI_HandRow
         [SerializeField] private TMP_Text _txtPlayerHPBlock;     // UI_PlayerHP
         [SerializeField] private TMP_Text _txtPulse;             // UI_PulseCounter
         [SerializeField] private Button _btnEndTurn;             // UI_EndTurn
@@ -50,7 +53,8 @@ namespace WH.UI
         private void Awake()
         {
             _rng = new System.Random(123456);
-
+            _handLayout = _handRoot.GetComponent<HandLayoutController>();
+            _dealDiscard = _handRoot.GetComponent<DealDiscardController>();
             if (_turns == null) _turns = FindAnyObjectByType<TurnManager>(FindObjectsInactive.Include);
             if (_pulse == null) _pulse = FindAnyObjectByType<PulseManager>(FindObjectsInactive.Include);
             if (_resolver == null) _resolver = FindAnyObjectByType<CardResolver>(FindObjectsInactive.Include);
@@ -67,6 +71,8 @@ namespace WH.UI
                 _turns.OnEnemyTurnStarted += HandleEnemyTurnStart;
                 _turns.OnEnemyTurnEnded += HandleEnemyTurnEnd;
                 _turns.OnBattleEnded += HandleBattleEnded;
+                _turns.OnPlayerTurnEnded += HandlePlayerTurnEnded;
+                _turns.OnPlayerTurnStarted += HandlePlayerTurnStarted;
             }
             if (_pulse != null)
                 _pulse.OnPulseChanged += HandlePulseChanged;
@@ -84,6 +90,8 @@ namespace WH.UI
                 _turns.OnEnemyTurnStarted -= HandleEnemyTurnStart;
                 _turns.OnEnemyTurnEnded -= HandleEnemyTurnEnd;
                 _turns.OnBattleEnded -= HandleBattleEnded;
+                _turns.OnPlayerTurnEnded -= HandlePlayerTurnEnded;
+                _turns.OnPlayerTurnStarted -= HandlePlayerTurnStarted;
             }
             if (_pulse != null)
                 _pulse.OnPulseChanged -= HandlePulseChanged;
@@ -143,6 +151,33 @@ namespace WH.UI
             RefreshAllCombatantUI();
             SetHandInteractable(true);
         }
+        void HandlePlayerTurnEnded()
+        {
+            if (_dealDiscard == null) return;
+
+            // stop layout reacting while we clear
+            if (_handLayout != null) _handLayout.Clear();
+
+            // animate each remaining card to DiscardAnchor and despawn
+            foreach (var v in _spawned)
+            {
+                if (v == null) continue;
+
+                // prevent late clicks
+                var btn = v.GetComponent<UnityEngine.UI.Button>();
+                if (btn) btn.interactable = false;
+
+                var rt = v.transform as RectTransform;
+                if (_handLayout != null) _handLayout.StopAnimating(rt);
+                _dealDiscard.DiscardAndDespawn(rt);
+            }
+
+            _spawned.Clear();
+        }
+        void HandlePlayerTurnStarted()
+        {
+            RebuildHandUI();
+        }
 
         private void HandlePlayerTurnEnd()
         {
@@ -174,23 +209,59 @@ namespace WH.UI
         {
             ClearHandUI();
 
+            var handLayout = _handRoot.GetComponentInChildren<WH.UI.HandLayoutController>(true);
+            if (handLayout != null && handLayout.transform as RectTransform != _handRoot)
+            {
+                // parent new cards under the controller's transform instead of _handRoot
+                _handRoot = handLayout.transform as RectTransform;
+            }
+            handLayout.Clear();
+            var dealDiscard = _handRoot.GetComponent<DealDiscardController>()
+               ?? _handRoot.gameObject.AddComponent<DealDiscardController>();
+            var spawnedRects = new List<RectTransform>();
+
             for (int i = 0; i < _hand.Count; i++)
             {
                 var card = _hand[i];
-                var view = Instantiate(_cardPrefab, _handRoot);
+
+                var view = Instantiate(_cardPrefab, _handRoot);     // CardView prefab
+                var go = view.gameObject;
                 _spawned.Add(view);
 
-                string name = card.DisplayName;
-                string rules = ""; // fill from your data later if you want
-                int cost = card.CostPulse;
-                string pulseText = _txtPulse ? _txtPulse.text : "";
+                var fx = go.GetComponent<CardFxController>() ?? go.AddComponent<CardFxController>();
+                handLayout.RegisterCard(go.transform as RectTransform, fx);
 
-                var color = GuessFamilyColor(card);
+                // Step 3: start at deck, fade in later
+                dealDiscard.InitCardForDeal(go.transform as RectTransform);
+                spawnedRects.Add(go.transform as RectTransform);
+                var applier = view.GetComponent<WH.UI.CardStyleApplier>();
+                if (applier) applier.ApplyFrom(card);
                 int capturedIndex = i;
+                view.Bind(card,
+          card.DisplayName, "", card.CostPulse, _txtPulse ? _txtPulse.text : "",
+          GuessFamilyColor(card),
+          _ =>
+          {
+              // predict: CardResolver gates by Pulse cost, so this is safe UX
+              var canAfford = _turns.Pulse.Current >= card.CostPulse;
 
-                view.Bind(card, name, rules, cost, pulseText, color, _ => TryPlayIndex(capturedIndex));
+              if (canAfford) fx.PlayAcceptedFX();
+              else fx.PlayDeniedFX();
+
+              // run your current logic (fires resolver etc.)
+              TryPlayIndex(capturedIndex);
+          });
             }
+            handLayout.OnHandRebuilt(); // this triggers the fly-to-slot from the deck pose
+            dealDiscard.PlayDealStagger(spawnedRects, this); // subtle staggered fade-in
+
+
+            handLayout.SetNextLayoutStagger(0.04f); // 40 ms per card feels Balatro-ish
+            handLayout.OnHandRebuilt();
+            dealDiscard.PlayDealStagger(spawnedRects, this); // keep your fade stagger too
+
         }
+
 
         private void ClearHandUI()
         {
@@ -239,13 +310,14 @@ namespace WH.UI
 
         private void RefreshAllCombatantUI()
         {
-            if (_turns?.PlayerState)
+            if (_turns != null && _turns.PlayerState != null)
             {
                 int php = GetInt(_turns.PlayerState, "CurrentHp");
                 int pmax = GetInt(_turns.PlayerState, "MaxHp");
                 int pblk = GetInt(_turns.PlayerState, "Block");
                 if (_txtPlayerHPBlock) _txtPlayerHPBlock.text = $"HP {php}/{pmax}  |  Block {Mathf.Max(0, pblk)}";
             }
+
         }
 
         // ------------ intent preview w/o enum dependency ------------
