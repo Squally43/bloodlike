@@ -148,8 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e34a36f02d6585449e4ac60aa1cdc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Systems.TurnManager
-  _pulse: {fileID: 581394965}
-  _enemyAI: {fileID: 0}
+  playerStartingHp: 60
+  enemyStartingHpFallback: 40
+  pulse: {fileID: 581394965}
 --- !u!4 &37244726
 Transform:
   m_ObjectHideFlags: 0

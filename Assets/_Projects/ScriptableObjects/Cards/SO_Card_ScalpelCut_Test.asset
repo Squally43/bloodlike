@@ -35,3 +35,7 @@ MonoBehaviour:
     status: 0
   sfxOnPlay: {fileID: 0}
   vfxOnPlay: {fileID: 0}
+  baseMaterial: {fileID: 0}
+  overlayMaterial: {fileID: 2100000, guid: 506408482f41bdc4984047d35af8149a, type: 2}
+  baseTint: {r: 1, g: 1, b: 1, a: 1}
+  overlayOpacity: 0.2
