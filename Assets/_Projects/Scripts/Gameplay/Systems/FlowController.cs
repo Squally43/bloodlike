@@ -13,7 +13,8 @@ namespace WH.Gameplay.Systems
         [Header("Scene Systems")]
         [SerializeField] private TurnManager _turnManager;
         [SerializeField] private PulseManager _pulse;
-
+        [SerializeField] private HarvestGlue _harvestGlue;
+        [SerializeField] private CanvasGroup _harvestOverlay;
         [Header("Temp Debug")]
         [SerializeField] private EnemyData testEnemy;
 
@@ -24,6 +25,14 @@ namespace WH.Gameplay.Systems
         private void Start()
         {
             EnterArena();
+        }
+        private void ShowHarvestOverlay(bool on)
+        {
+            if (!_harvestOverlay) return;
+            _harvestOverlay.gameObject.SetActive(true);
+            _harvestOverlay.alpha = on ? 1f : 0f;
+            _harvestOverlay.blocksRaycasts = on;
+            _harvestOverlay.interactable = on;
         }
 
         private void Update()
@@ -62,12 +71,17 @@ namespace WH.Gameplay.Systems
             if (playerWon)
             {
                 SetPhase(GamePhase.Harvest);
+                ShowHarvestOverlay(true);
+                _harvestGlue?.SignalVictory();   // ← start QTE/placeholder → picker
             }
             else
             {
                 SetPhase(GamePhase.Stitch);
+                ShowHarvestOverlay(true);
+                _harvestGlue?.SignalDefeat();    // ← add curse based on threat mark
             }
         }
+
 
         private void SetPhase(GamePhase next)
         {

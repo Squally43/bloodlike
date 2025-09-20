@@ -5,12 +5,13 @@ using WH.Gameplay.Enemies;
 namespace WH.Gameplay.Systems
 {
     /// <summary>
-    /// Minimal, event-driven battle loop.
+    /// Minimal, event-driven battle loop (Bootstrap scene).
+    /// Emits global signals so Main can react (camera, HUD, harvest, etc.).
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class TurnManager : MonoBehaviour
     {
-        // ---------- Events ----------
+        // ---------- Local events (kept for in-asm listeners) ----------
         public event Action OnPlayerTurnStarted;
         public event Action OnPlayerTurnEnded;
         public event Action OnEnemyTurnStarted;
@@ -19,15 +20,12 @@ namespace WH.Gameplay.Systems
 
         // ---------- Config ----------
         [Header("Starting Values")]
-
         [SerializeField] private int playerStartingHp = 60;
         [SerializeField] private int enemyStartingHpFallback = 40;
 
         [Header("Services")]
-        [SerializeField] private PulseManager pulse;   // ✅ the shared Pulse instance
-        public PulseManager Pulse => pulse;            // (keep this property)
-                                                       // assign in inspector
-        [SerializeField] private System.Random rngForEnemy = new System.Random(12345);
+        [SerializeField] private PulseManager pulse;     // shared Pulse
+        public PulseManager Pulse => pulse;
 
         // ---------- Runtime state ----------
         [Serializable]
@@ -46,6 +44,22 @@ namespace WH.Gameplay.Systems
         public bool BattleRunning { get; private set; }
         private EnemyData activeEnemyData;
         private int roundIndex = 1; // 1-based, cycles enemy intents
+
+        // =========================================================
+        //                 Bootstrap <-> Main bridge
+        // =========================================================
+        private void OnEnable()
+        {
+            // Main tells Bootstrap to end the turn / start next fight
+            WH.GameSignals.OnEndTurnRequested += EndPlayerTurn;
+            WH.GameSignals.OnNextFightReadied += StartNewBattle;
+        }
+
+        private void OnDisable()
+        {
+            WH.GameSignals.OnEndTurnRequested -= EndPlayerTurn;
+            WH.GameSignals.OnNextFightReadied -= StartNewBattle;
+        }
 
         // =========================================================
         //                       PUBLIC API
@@ -68,11 +82,21 @@ namespace WH.Gameplay.Systems
             EnemyState.CurrentHp = EnemyState.MaxHp;
             EnemyState.Block = 0;
 
-            // pulse + first turn
             if (pulse) pulse.ResetForNewTurn();
+
+            // First player turn
             OnPlayerTurnStarted?.Invoke();
+            WH.GameSignals.RaisePlayerTurnStarted();
         }
 
+        /// <summary>Called from Main via GameSignals when tester presses 'N'.</summary>
+        public void StartNewBattle()
+        {
+            // Reuse the current enemy data (or null -> fallback)
+            StartBattle(activeEnemyData);
+        }
+
+        /// <summary>Called from Main via GameSignals when End Turn is clicked.</summary>
         public void EndPlayerTurn()
         {
             if (!BattleRunning) return;
@@ -86,20 +110,27 @@ namespace WH.Gameplay.Systems
         private void BeginPlayerTurn()
         {
             if (!BattleRunning) return;
-            PlayerState.Block = 0;                 // player block clears on their turn
+
+            // MVP rule: Player block clears at the start of their own turn
+            PlayerState.Block = 0;
+
             if (pulse != null) pulse.ResetForNewTurn();
+
             OnPlayerTurnStarted?.Invoke();
+            WH.GameSignals.RaisePlayerTurnStarted();
         }
 
         private void BeginEnemyTurn()
         {
             if (!BattleRunning) return;
 
+            // MVP rule: Enemy block clears at the start of its own turn
+            EnemyState.Block = 0;
+
             OnEnemyTurnStarted?.Invoke();
 
             ResolveEnemyIntentOnce();
 
-            EnemyState.Block = 0;                  // enemy block clears at end of enemy turn
             ClampHp(PlayerState);
             ClampHp(EnemyState);
 
@@ -128,7 +159,7 @@ namespace WH.Gameplay.Systems
             string type = GetEnumName(step, "type");
             int value = TryGetInt(step, "value");
             int times = Mathf.Max(1, TryGetInt(step, "times"));
-            string status = GetString(step, "status");
+            // string status = GetString(step, "status"); // reserved
 
             switch (type)
             {
@@ -136,12 +167,15 @@ namespace WH.Gameplay.Systems
                 case "MultiAttack":
                     for (int i = 0; i < times; i++) DealDamageToPlayer(value);
                     break;
+
                 case "Block":
                     EnemyState.Block += Mathf.Max(0, value);
                     break;
+
                 case "ApplyStatus":
-                    // hook up statuses later
+                    // statuses come later
                     break;
+
                 default:
                     DealDamageToPlayer(Mathf.Max(1, value));
                     break;
@@ -175,8 +209,20 @@ namespace WH.Gameplay.Systems
 
         private bool CheckBattleEnd()
         {
-            if (EnemyState.CurrentHp <= 0) { BattleRunning = false; OnBattleEnded?.Invoke(true); return true; }
-            if (PlayerState.CurrentHp <= 0) { BattleRunning = false; OnBattleEnded?.Invoke(false); return true; }
+            if (EnemyState.CurrentHp <= 0)
+            {
+                BattleRunning = false;
+                OnBattleEnded?.Invoke(true);
+                WH.GameSignals.RaiseBattleEnded(true);
+                return true;
+            }
+            if (PlayerState.CurrentHp <= 0)
+            {
+                BattleRunning = false;
+                OnBattleEnded?.Invoke(false);
+                WH.GameSignals.RaiseBattleEnded(false);
+                return true;
+            }
             return false;
         }
 
@@ -235,6 +281,7 @@ namespace WH.Gameplay.Systems
         }
     }
 }
+
 
 
 

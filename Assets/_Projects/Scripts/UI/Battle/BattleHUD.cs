@@ -11,7 +11,7 @@ using WH.UI;
 namespace WH.UI
 {
     [DisallowMultipleComponent]
-    public sealed class BattleHUD : MonoBehaviour
+    public sealed class BattleHUD : MonoBehaviour, WH.Gameplay.Systems.INextFightQueue
     {
         [Header("Scene Services")]
         [SerializeField] private TurnManager _turns;
@@ -61,7 +61,8 @@ namespace WH.UI
             if (_pulse == null) _pulse = FindAnyObjectByType<PulseManager>(FindObjectsInactive.Include);
             if (_resolver == null) _resolver = FindAnyObjectByType<CardResolver>(FindObjectsInactive.Include);
 
-            if (_btnEndTurn) _btnEndTurn.onClick.AddListener(() => _turns?.EndPlayerTurn());
+            if (_btnEndTurn) _btnEndTurn.onClick.AddListener(() => WH.GameSignals.RaiseEndTurnRequested());
+
         }
 
         private void OnEnable()
@@ -78,6 +79,8 @@ namespace WH.UI
             }
             if (_pulse != null)
                 _pulse.OnPulseChanged += HandlePulseChanged;
+            WH.GameSignals.OnPlayerTurnStarted += HandlePlayerTurnStart;
+            WH.GameSignals.OnBattleEnded += HandleBattleEnded;
 
             RefreshAllCombatantUI();
             UpdatePulseMirror();
@@ -97,6 +100,9 @@ namespace WH.UI
             }
             if (_pulse != null)
                 _pulse.OnPulseChanged -= HandlePulseChanged;
+
+            WH.GameSignals.OnPlayerTurnStarted -= HandlePlayerTurnStart;
+            WH.GameSignals.OnBattleEnded -= HandleBattleEnded;
         }
 
         // ------------ deck ops (minimal) ------------
@@ -153,7 +159,12 @@ namespace WH.UI
                 (list[n - 1], list[k]) = (list[k], list[n - 1]);
             }
         }
-
+        public void QueueCardNextFight(WH.Gameplay.Cards.CardData card)
+        {
+            if (card == null) return;
+            _debugAddsNextFight.Add(card);
+            Debug.Log($"[HUD Deck] Queued for next fight: {card.DisplayName}");
+        }
         // ------------ turn hooks ------------
         private void HandlePlayerTurnStart()
         {

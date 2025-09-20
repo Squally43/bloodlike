@@ -91,7 +91,7 @@ namespace WH.UI
 
         private void OnBattleEnded(bool playerWon)
         {
-            // leave final values visible
+            WH.GameSignals.RaiseBattleEnded(playerWon);
         }
 
         // --- UI updates ---

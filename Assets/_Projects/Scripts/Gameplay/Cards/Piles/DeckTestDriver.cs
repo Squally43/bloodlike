@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using WH.Gameplay;                  // CardRarity, BodyTag, CardEffectType
 using WH.Gameplay.Cards.Piles;
@@ -7,7 +7,7 @@ using WH.Gameplay.Systems;
 namespace WH.Gameplay.Cards
 {
     [DisallowMultipleComponent]
-    public sealed class DeckTestDriver : MonoBehaviour
+    public sealed class DeckTestDriver : MonoBehaviour, INextFightQueue
     {
         [Header("Scene Services")]
         [SerializeField] private TurnManager _turns;
@@ -96,6 +96,11 @@ namespace WH.Gameplay.Cards
                 _resolver.OnRetainThisCard += _hRetain;
                 _resolver.OnInfo += _hInfo;
             }
+        }
+        public void QueueCardNextFight(CardData card)
+        {
+            if (card == null) return;
+            _pendingAddsNextFight.Add(card);
         }
 
         private void OnDisable()
@@ -216,9 +221,21 @@ namespace WH.Gameplay.Cards
             {
                 Debug.Log("[Deck] Next fight");
                 _initialized = false;
-
-                // Phase 4 glue: clear all marks between fights
                 if (_marks) _marks.ClearAll();
+                WH.GameSignals.RaiseNextFightReadied();   // ← tells TurnManager to StartNewBattle()
+            }
+
+            // put near other dev controls
+            if (Input.GetKeyDown(KeyCode.V))  // Victory
+            {
+                var glue = FindAnyObjectByType<WH.Gameplay.Systems.HarvestGlue>(FindObjectsInactive.Include);
+                glue?.SignalVictory();
+            }
+            if (Input.GetKeyDown(KeyCode.B))  // Defeat
+            {
+                var glue = FindAnyObjectByType<WH.Gameplay.Systems.HarvestGlue>(FindObjectsInactive.Include);
+                glue?.SignalDefeat();
+                _initialized = false; // advance to next fight
             }
 
             if (Input.GetKeyDown(KeyCode.R)) QueueRandomRewardNextFight();
@@ -241,7 +258,7 @@ namespace WH.Gameplay.Cards
                 _hand.RemoveAt(index);
 
                 if (_forceExhaustThisCard || card.ExhaustAfterPlay) _exhaust.Add(card);
-                else if (_retainThisCard) _hand.Add(card);      // simple �retain�: keep in hand
+                else if (_retainThisCard) _hand.Add(card);      // simple “retain”: keep in hand
                 else _discard.Add(card);
 
                 Debug.Log($"[Deck] Played {card.DisplayName}. Hand:{_hand.Count} Discard:{_discard.Count} Exhaust:{_exhaust.Count}");
