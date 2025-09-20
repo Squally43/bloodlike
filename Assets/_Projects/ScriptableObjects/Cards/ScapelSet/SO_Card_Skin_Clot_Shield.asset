@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e248ecddae2be054c9084d1f85f7589c, type: 3}
-  m_Name: SO_Card_Guard_Test
+  m_Name: SO_Card_Skin_Clot_Shield
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Cards.CardData
-  id: 97e933b3350a48fc8cf433aa4107cf14
-  displayName: Guard
-  family: 0
+  id: 76b1e36fc301446ba7a901a17c676176
+  displayName: Clot Shield
+  family: 10
   rarity: 0
   costPulse: 1
   sideCosts:
-    hpCost: 0
-    maxHpCost: 0
-    addWoundOnPlay: 0
+    loseHp: 0
+    discardRandom: 0
   baseDamage: 0
-  baseBlock: 5
+  baseBlock: 8
   scryAmount: 0
   drawAmount: 0
   exhaustAfterPlay: 0
   retainInHand: 0
-  effects:
-  - type: 1
-    target: 0
-    value: 6
-    value2: 0
-    status: 0
+  designerEffects:
+  - customOp: 5
+    number: 1
+    note: 
+    showInRules: 0
+  rulesTextOverride: Bleed Bonus Next of 1
+  effects: []
   sfxOnPlay: {fileID: 0}
   vfxOnPlay: {fileID: 0}
   baseMaterial: {fileID: 0}
-  overlayMaterial: {fileID: 2100000, guid: a124ca1b6e58fb843af6f44b2b0a0491, type: 2}
+  overlayMaterial: {fileID: 0}
   baseTint: {r: 1, g: 1, b: 1, a: 1}
-  overlayOpacity: 0.2
+  overlayOpacity: 0.6

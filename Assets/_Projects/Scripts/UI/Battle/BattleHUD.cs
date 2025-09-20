@@ -35,9 +35,11 @@ namespace WH.UI
         [SerializeField] private Color _eyeColor = new Color(0.961f, 0.847f, 0.541f);
 
         [Header("Deck Setup")]
+        [SerializeField] private CardCatalog _catalog;
+        [SerializeField] private bool _useCatalogStarter = true;
         [SerializeField] private List<CardData> _startingDeck = new List<CardData>();
         [SerializeField] private int _startingHand = 5;
-
+        [SerializeField] private List<CardData> _debugAddsNextFight = new List<CardData>();
         // --- runtime piles (simple lists for this HUD slice) ---
         private readonly List<CardData> _draw = new List<CardData>();
         private readonly List<CardData> _discard = new List<CardData>();
@@ -101,9 +103,29 @@ namespace WH.UI
         private void ResetDeck()
         {
             _draw.Clear(); _discard.Clear(); _exhaust.Clear(); _hand.Clear();
-            _draw.AddRange(_startingDeck);
+
+            // Choose the source of truth for the starter
+            if (_useCatalogStarter && _catalog != null)
+            {
+                // Same starter as the driver (5x Strike, 5x Guard unless you edit the SO)
+                _draw.AddRange(_catalog.BuildStarterDeck());
+            }
+            else
+            {
+                // Legacy/manual mode (uses the inspector list on this HUD)
+                _draw.AddRange(_startingDeck);
+            }
+
+            // Optional: let you inject a few cards for next fight testing
+            if (_debugAddsNextFight != null && _debugAddsNextFight.Count > 0)
+            {
+                foreach (var add in _debugAddsNextFight) if (add) _draw.Add(add);
+                _debugAddsNextFight.Clear();
+            }
+
             Shuffle(_draw);
         }
+
 
         private void DrawUpTo(int target)
         {
@@ -231,26 +253,26 @@ namespace WH.UI
                 var fx = go.GetComponent<CardFxController>() ?? go.AddComponent<CardFxController>();
                 handLayout.RegisterCard(go.transform as RectTransform, fx);
 
-                // Step 3: start at deck, fade in later
                 dealDiscard.InitCardForDeal(go.transform as RectTransform);
                 spawnedRects.Add(go.transform as RectTransform);
-                var applier = view.GetComponent<WH.UI.CardStyleApplier>();
-                if (applier) applier.ApplyFrom(card);
+                Color tint = (card.BaseTint != Color.white) ? card.BaseTint : GuessFamilyColor(card);
+
                 int capturedIndex = i;
-                view.Bind(card,
-          card.DisplayName, "", card.CostPulse, _txtPulse ? _txtPulse.text : "",
-          GuessFamilyColor(card),
-          _ =>
-          {
-              // predict: CardResolver gates by Pulse cost, so this is safe UX
-              var canAfford = _turns.Pulse.Current >= card.CostPulse;
 
-              if (canAfford) fx.PlayAcceptedFX();
-              else fx.PlayDeniedFX();
-
-              // run your current logic (fires resolver etc.)
-              TryPlayIndex(capturedIndex);
-          });
+                
+                view.Bind(
+                    card,
+                    card.DisplayName,
+                    card.RulesLine,                            // <= show rules
+                    card.CostPulse,
+                    _txtPulse ? _txtPulse.text : "",
+                    tint,
+                    _ =>
+                    {
+                        var canAfford = _turns.Pulse.Current >= card.CostPulse;
+                        if (canAfford) fx.PlayAcceptedFX(); else fx.PlayDeniedFX();
+                        TryPlayIndex(capturedIndex);
+                    });
             }
             handLayout.OnHandRebuilt(); // this triggers the fly-to-slot from the deck pose
             dealDiscard.PlayDealStagger(spawnedRects, this); // subtle staggered fade-in

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e248ecddae2be054c9084d1f85f7589c, type: 3}
+  m_Name: SO_Card_Curse_Wound
+  m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Cards.CardData
+  id: 2ac5155f5ff64b5b96d7017dd71cf1ea
+  displayName: Wound
+  family: 0
+  rarity: 3
+  costPulse: 0
+  sideCosts:
+    loseHp: 0
+    discardRandom: 0
+  baseDamage: 0
+  baseBlock: 0
+  scryAmount: 0
+  drawAmount: 0
+  exhaustAfterPlay: 1
+  retainInHand: 0
+  designerEffects:
+  - customOp: 9
+    number: 1
+    note: 
+    showInRules: 0
+  rulesTextOverride: 
+  effects: []
+  sfxOnPlay: {fileID: 0}
+  vfxOnPlay: {fileID: 0}
+  baseMaterial: {fileID: 0}
+  overlayMaterial: {fileID: 0}
+  baseTint: {r: 0.5188679, g: 0, b: 0.5188679, a: 1}
+  overlayOpacity: 0.6

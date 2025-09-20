@@ -2246,12 +2246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Cards.DeckTestDriver
   _turns: {fileID: 0}
   _resolver: {fileID: 324890505}
-  _startingList:
-  - {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
-  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
-  - {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
-  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
-  - {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
+  _catalog: {fileID: 11400000, guid: f5be5abbca9e0d449b1b4cf8ab5f7aa3, type: 2}
+  _useCatalogStarter: 1
+  _startingList: []
   _startingHand: 5
 --- !u!1 &1039640417
 GameObject:
@@ -3759,13 +3756,11 @@ MonoBehaviour:
   _cardPrefab: {fileID: 2672496079643464883, guid: 57c6a28d868459449aa4021fd33ca77b, type: 3}
   _skinColor: {r: 0.945, g: 0.898, b: 0.816, a: 1}
   _eyeColor: {r: 0.961, g: 0.847, b: 0.541, a: 1}
-  _startingDeck:
-  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
-  - {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
-  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
-  - {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
-  - {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
+  _catalog: {fileID: 11400000, guid: f5be5abbca9e0d449b1b4cf8ab5f7aa3, type: 2}
+  _useCatalogStarter: 1
+  _startingDeck: []
   _startingHand: 5
+  _debugAddsNextFight: []
 --- !u!1 &1624270326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,6 +4171,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  fallbackCardWidth: 220
+  nextLayoutPerIndexDelay: 0
 --- !u!114 &2099966679
 MonoBehaviour:
   m_ObjectHideFlags: 0

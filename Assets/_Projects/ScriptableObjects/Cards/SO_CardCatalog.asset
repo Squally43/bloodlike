@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e811deac2341edf458372e0a3a587294, type: 3}
+  m_Name: SO_CardCatalog
+  m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Cards.CardCatalog
+  starterDeck:
+  - card: {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: ddd76da4a68b92142b4284778c07d12e, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: cc2ece67a3c7da94ba7bac88a14dcd47, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: 6a85fe60e6afacf4ea9d07d338be0921, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: 680cbc2d8de45274088f330d73b4b2eb, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: f114b7f5afaa247498f5193257ac40dd, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: ddd76da4a68b92142b4284778c07d12e, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
+    count: 1
+  - card: {fileID: 11400000, guid: 9be439eafd51d5446a185d416d1c2f2c, type: 2}
+    count: 1
+  skinRewards:
+  - {fileID: 11400000, guid: cc2ece67a3c7da94ba7bac88a14dcd47, type: 2}
+  - {fileID: 11400000, guid: ddd76da4a68b92142b4284778c07d12e, type: 2}
+  eyeRewards:
+  - {fileID: 11400000, guid: f114b7f5afaa247498f5193257ac40dd, type: 2}
+  - {fileID: 11400000, guid: 680cbc2d8de45274088f330d73b4b2eb, type: 2}
+  negatives:
+  - {fileID: 11400000, guid: 8830dff52ba6cca4cabf211084a1deee, type: 2}
+  - {fileID: 11400000, guid: d7619b763f4f6764db4aa7de87b2a101, type: 2}
