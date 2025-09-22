@@ -100,6 +100,9 @@ namespace WH.UI
 
         void ApplyLayout()
         {
+            for (int i = 0; i < _cards.Count; i++)
+                if (_cards[i] == null) { _cards.RemoveAt(i); i--; }
+
             if (_cards.Count == 0) return;
 
             // Compute total width we’ll occupy

@@ -37,5 +37,5 @@ MonoBehaviour:
   vfxOnPlay: {fileID: 0}
   baseMaterial: {fileID: 0}
   overlayMaterial: {fileID: 0}
-  baseTint: {r: 0.6470588, g: 0.1647059, b: 0.1647059, a: 1}
+  baseTint: {r: 0, g: 0, b: 0, a: 1}
   overlayOpacity: 0.6

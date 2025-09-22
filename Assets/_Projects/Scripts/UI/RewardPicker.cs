@@ -71,6 +71,7 @@ namespace WH.UI
                 Destroy(_handRoot.GetChild(i).gameObject);
 
             gameObject.SetActive(true);
+            if (_handLayout != null) _handLayout.Clear();
             ClearSpawned();
             SetGlitch(isLying && CfgBool("enableGlitchTint", true));
 
@@ -103,12 +104,19 @@ namespace WH.UI
 
         public void Hide()
         {
+            // 1) Stop listening & drop references BEFORE destroying any cards.
+            if (_handLayout != null)
+                _handLayout.Clear();   // unsubscribes HoverChanged and clears the list
+
+            // 2) Animate out (or just destroy) safely.
             if (_dealDiscard != null) _dealDiscard.DiscardAndDespawnMany(_spawnedRects);
             else
             {
                 for (int i = 0; i < _spawned.Count; i++)
                     if (_spawned[i]) Destroy(_spawned[i].gameObject);
             }
+
+            // 3) Local bookkeeping.
             _spawned.Clear();
             _spawnedRects.Clear();
 
@@ -116,6 +124,7 @@ namespace WH.UI
             if (gameObject.activeSelf) gameObject.SetActive(false);
             _isOpen = false;
         }
+
 
         private void Choose(CardData data)
         {
