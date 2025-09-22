@@ -24,13 +24,13 @@ MonoBehaviour:
   baseBlock: 0
   scryAmount: 0
   drawAmount: 0
-  exhaustAfterPlay: 1
+  exhaustAfterPlay: 0
   retainInHand: 0
   designerEffects:
   - customOp: 9
     number: 1
     note: 
-    showInRules: 0
+    showInRules: 1
   rulesTextOverride: 
   effects: []
   sfxOnPlay: {fileID: 0}

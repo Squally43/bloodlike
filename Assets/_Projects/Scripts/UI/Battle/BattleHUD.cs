@@ -149,6 +149,7 @@ namespace WH.UI
                 _draw.RemoveAt(_draw.Count - 1);
                 _hand.Add(last);
             }
+            LogHudHand("Draw", _hand);
         }
 
         private void Shuffle(List<CardData> list)
@@ -176,9 +177,8 @@ namespace WH.UI
             }
 
             // ensure UI shows correct pulse at start
-            _pulse.ResetForNewTurn();
             UpdatePulseMirror();
-
+            LogHudHand("Start", _hand);
             DrawUpTo(_startingHand);
             RebuildHandUI();
             RefreshAllCombatantUI();
@@ -235,6 +235,8 @@ namespace WH.UI
         private void HandleBattleEnded(bool playerWon)
         {
             SetHandInteractable(false);
+            _seenFirstPlayerTurn = false;
+            _roundIndex = 0;
         }
 
         // ------------ hand UI ------------
@@ -397,6 +399,15 @@ namespace WH.UI
             var f = obj.GetType().GetField(name);
             if (f != null && f.FieldType == typeof(int)) return (int)f.GetValue(obj);
             return 0;
+        }
+        private void LogHudHand(string prefix, IList<CardData> hand)
+        {
+#if UNITY_EDITOR
+            if (hand == null) { Debug.Log($"[HUD Hand] {prefix}: (null)"); return; }
+            if (hand.Count == 0) { Debug.Log($"[HUD Hand] {prefix}: (empty)"); return; }
+            var names = string.Join(", ", System.Linq.Enumerable.Select(hand, c => c ? c.DisplayName : "<null>"));
+            Debug.Log($"[HUD Hand] {prefix}: {names}");
+#endif
         }
 
         private static string GetString(object obj, string name)

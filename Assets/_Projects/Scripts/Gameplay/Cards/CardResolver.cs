@@ -62,8 +62,8 @@ namespace WH.Gameplay.Cards
         {
             if (card == null || _turns == null) return false;
 
-            // 0) UNPLAYABLE guard (e.g., Wound/Parasite). This prevents cost payment.
-            if (HasCustomOp(card, CardCustomOp.Unplayable))
+            // 0) Hard gate for things like Wound. We respect both Effects and Designer Effects.
+            if (card.IsUnplayable)
             {
                 Info($"'{card.DisplayName}' is Unplayable.");
                 return false;

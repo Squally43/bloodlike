@@ -66,6 +66,30 @@ namespace WH.Gameplay.Cards
         public bool ExhaustAfterPlay => exhaustAfterPlay;
         public bool RetainInHand => retainInHand;
         public IReadOnlyList<CardEffectDef> Effects => effects;
+        // True if this card should never be playable (Wound, etc.)
+        public bool IsUnplayable
+        {
+            get
+            {
+                // Advanced effects list
+                if (effects != null)
+                {
+                    for (int i = 0; i < effects.Count; i++)
+                        if (effects[i].type == CardEffectType.Custom && effects[i].value == CardCustomOp.Unplayable)
+                            return true;
+                }
+
+                // Designer effects list
+                if (designerEffects != null)
+                {
+                    for (int i = 0; i < designerEffects.Count; i++)
+                        if (designerEffects[i].customOp == DesignerCustomOp.Unplayable)
+                            return true;
+                }
+
+                return false;
+            }
+        }
 
         public AudioClip SfxOnPlay => sfxOnPlay;
         public GameObject VfxOnPlay => vfxOnPlay;

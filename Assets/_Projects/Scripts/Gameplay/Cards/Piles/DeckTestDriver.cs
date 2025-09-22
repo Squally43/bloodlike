@@ -3,7 +3,6 @@ using UnityEngine;
 using WH.Gameplay;                  // CardRarity, BodyTag, CardEffectType
 using WH.Gameplay.Cards.Piles;
 using WH.Gameplay.Systems;
-
 namespace WH.Gameplay.Cards
 {
     [DisallowMultipleComponent]
@@ -20,7 +19,7 @@ namespace WH.Gameplay.Cards
 
         [Tooltip("Fallback/manual list if no catalog or toggle disabled.")]
         [SerializeField] private List<CardData> _startingList = new();
-
+        private bool _suppressed;
         [Header("Rules")]
         [SerializeField] private int _startingHand = 5;
 
@@ -63,6 +62,9 @@ namespace WH.Gameplay.Cards
 
         private void OnEnable()
         {
+            _suppressed = DetectExternalDeckOwner();
+            if (_suppressed) { Debug.Log("[Deck] Suppressed: another INextFightQueue owns the deck."); return; }
+
             if (_turns != null)
             {
                 _turns.OnPlayerTurnStarted += HandlePlayerTurnStart;
@@ -76,17 +78,16 @@ namespace WH.Gameplay.Cards
                 _hScry = HandleRequestScry;
                 _hExhaustCurse = HandleExhaustCurseInHand;
                 _hReveal = OnRevealIntent;
-                _hMark = OnMarkEnemy;
                 _hForceExhaust = () => _forceExhaustThisCard = true;
                 _hRetain = () => _retainThisCard = true;
                 _hInfo = OnResolverInfo;
                 _hMark = tag =>
-                {
-                    if (_marks == null) _marks = FindAnyObjectByType<MarkController>(FindObjectsInactive.Include);
-                    if (_marks != null) _marks.ApplyPlayerHarvestMark(tag);
+                    {
+                            if (_marks == null) _marks = FindAnyObjectByType<MarkController>(FindObjectsInactive.Include);
+                            if (_marks != null) _marks.ApplyPlayerHarvestMark(tag);
                     Debug.Log($"[Resolver] Marked enemy: {tag}");
-                };
-                _resolver.OnMarkEnemy += _hMark;
+                        }
+                ;
                 _resolver.OnRequestDraw += _hDraw;
                 _resolver.OnRequestScry += _hScry;
                 _resolver.OnRequestExhaustCurseInHand += _hExhaustCurse;
@@ -101,10 +102,13 @@ namespace WH.Gameplay.Cards
         {
             if (card == null) return;
             _pendingAddsNextFight.Add(card);
+            Debug.Log($"[Deck] Queued for next fight: {card.DisplayName}");
         }
+
 
         private void OnDisable()
         {
+            if (_suppressed) return;
             if (_turns != null)
             {
                 _turns.OnPlayerTurnStarted -= HandlePlayerTurnStart;
@@ -125,36 +129,47 @@ namespace WH.Gameplay.Cards
             }
         }
 
+        // DeckTestDriver.cs
         public void ResetDeck()
         {
+            // 1) wipe all piles without calling Clear()
             _draw.MoveAllTo(_discard);
-            _discard.MoveAllTo(_draw);
-            _exhaust.MoveAllTo(_draw);
-            _hand.TakeAll();
+            _discard.MoveAllTo(_exhaust);
+            _hand.TakeAll();                 // (if Hand supports it) just empties the hand
 
-            var source = new List<CardData>();
-            if (_useCatalogStarter && _catalog != null)
-                source.AddRange(_catalog.BuildStarterDeck()); // 5x Strike, 5x Guard
-            else
-                source.AddRange(_startingList);
+            // 2) seed from starter (catalog or manual list)
+            var seed = (_useCatalogStarter && _catalog != null)
+                ? _catalog.BuildStarterDeck()          // returns List<CardData>
+                : _startingList;                       // your manual starter list
 
-            // Apply any queued reward cards
+            if (seed != null)
+            {
+                for (int i = 0; i < seed.Count; i++)
+                    _draw.Add(seed[i]);                // per-card add (no AddRange)
+            }
+
+            // 3) apply queued rewards/curses
             if (_pendingAddsNextFight.Count > 0)
             {
-                foreach (var add in _pendingAddsNextFight) if (add) source.Add(add);
+                for (int i = 0; i < _pendingAddsNextFight.Count; i++)
+                    _draw.Add(_pendingAddsNextFight[i]);
                 Debug.Log($"[Deck] +{_pendingAddsNextFight.Count} card(s) added for this fight.");
                 _pendingAddsNextFight.Clear();
             }
 
-            foreach (var c in source) _draw.Add(c);
+            // 4) shuffle and mark initialized
             _draw.Shuffle(_rng);
-
             _initialized = true;
             Debug.Log($"[Deck] Reset with {_draw.Count} cards");
         }
 
+
+
+
+
         private void HandlePlayerTurnStart()
         {
+            if (_suppressed) return;
             if (!_initialized) ResetDeck();
 
             if (_draw.Count == 0 && _discard.Count > 0)
@@ -169,6 +184,7 @@ namespace WH.Gameplay.Cards
 
         private void HandlePlayerTurnEnd()
         {
+            if (_suppressed) return;
             // End-of-turn Parasite (sum all copies still in hand)
             int totalEndTurnHpLoss = 0;
             for (int i = 0; i < _hand.Count; i++)
@@ -358,6 +374,17 @@ namespace WH.Gameplay.Cards
             _pendingAddsNextFight.Add(pick);
             Debug.Log($"[Deck] Queued reward for next fight: {pick.DisplayName}");
         }
+        private bool DetectExternalDeckOwner()
+        {
+            var all = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            for (int i = 0; i < all.Length; i++)
+            {
+                var mb = all[i];
+                if (mb == null || mb == this) continue;
+                if (mb is WH.Gameplay.Systems.INextFightQueue) return true;
+            }
+            return false;
+        }
 
         private void QueueRandomFromFamilyNextFight(CardFamily family)
         {
@@ -371,6 +398,7 @@ namespace WH.Gameplay.Cards
 
         private void LogHand()
         {
+            if (_suppressed) return;
             var list = _hand.AsReadOnly();
             var s = "[Hand] ";
             for (int i = 0; i < list.Count; i++) s += $"{i + 1}:{list[i].DisplayName}  ";
