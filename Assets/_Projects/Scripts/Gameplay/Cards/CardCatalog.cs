@@ -12,9 +12,16 @@ namespace WH.Gameplay.Cards
         public List<Entry> starterDeck = new();
 
         [Header("Reward Pools")]
-        public List<CardData> skinRewards = new();   // Scalpel family
-        public List<CardData> eyeRewards = new();   // Pliers family
-        public List<CardData> negatives = new();   // Curses (Wound/Parasite)
+        public List<CardData> skinRewards = new();        // Scalpel family
+        public List<CardData> eyeRewards = new();        // Pliers family
+        public List<CardData> neutralRewards = new();     // Neutral/non-family rewards (optional)
+
+        [Header("Negatives/Curses")]
+        public List<CardData> negatives = new();          // e.g. Wound, Parasite
+
+        [Header("Specials")]
+        public CardData liarCard;                         // LIAR [1] — Exhaust. Do nothing. (rarity = Curse)
+        public CardData woundCardFallback;                // Optional direct ref if you want predictable Wound injection
 
         public List<CardData> BuildStarterDeck()
         {
@@ -26,7 +33,26 @@ namespace WH.Gameplay.Cards
             }
             return list;
         }
+
+        // ------------- tiny helpers -------------
+        public CardData TryFindWoundCard()
+        {
+            if (woundCardFallback) return woundCardFallback;
+            if (negatives == null || negatives.Count == 0) return null;
+
+            // Name contains "Wound" wins; otherwise just first Curse
+            for (int i = 0; i < negatives.Count; i++)
+            {
+                var c = negatives[i];
+                if (!c) continue;
+                if (c.DisplayName.IndexOf("wound", System.StringComparison.OrdinalIgnoreCase) >= 0) return c;
+            }
+            for (int i = 0; i < negatives.Count; i++)
+                if (negatives[i]) return negatives[i];
+            return null;
+        }
     }
 }
+
 
 

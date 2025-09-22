@@ -82,12 +82,15 @@ namespace WH.Gameplay.Cards
                 _hRetain = () => _retainThisCard = true;
                 _hInfo = OnResolverInfo;
                 _hMark = tag =>
-                    {
-                            if (_marks == null) _marks = FindAnyObjectByType<MarkController>(FindObjectsInactive.Include);
-                            if (_marks != null) _marks.ApplyPlayerHarvestMark(tag);
+                {
+                    if (_marks == null)
+                        _marks = FindAnyObjectByType<MarkController>(FindObjectsInactive.Include);
+
+                    if (_marks != null) _marks.ApplyPlayerHarvestMark(tag);
+                    else MarkController.ApplyPlayerHarvestMarkGlobal(tag);
+
                     Debug.Log($"[Resolver] Marked enemy: {tag}");
-                        }
-                ;
+                };
                 _resolver.OnRequestDraw += _hDraw;
                 _resolver.OnRequestScry += _hScry;
                 _resolver.OnRequestExhaustCurseInHand += _hExhaustCurse;

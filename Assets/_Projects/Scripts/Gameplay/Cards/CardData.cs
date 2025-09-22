@@ -2,43 +2,37 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using WH.Gameplay;                // <-- CardFamily, CardRarity, CardEffectDef, SideCosts live here
+using WH.Gameplay;
 
 namespace WH.Gameplay.Cards
 {
-    /// <summary>Scriptable definition of a playable card – designer-friendly.</summary>
     [CreateAssetMenu(menuName = "WH/Cards/CardData", fileName = "SO_Card_")]
     public class CardData : ScriptableObject
     {
         [Header("Identity")]
         [SerializeField] private string id;
         [SerializeField] private string displayName = "New Card";
-        [SerializeField] private CardFamily family = CardFamily.Neutral; // Neutral, Skin, Eye
-        [SerializeField] private CardRarity rarity = CardRarity.Common;  // Common/Uncommon/Rare/Curse
+        [SerializeField] private CardFamily family = CardFamily.Neutral;
+        [SerializeField] private CardRarity rarity = CardRarity.Common;
 
         [Header("Costs")]
         [Min(0)][SerializeField] private int costPulse = 1;
         [SerializeField] private SideCosts sideCosts;
 
-        [Header("Core Numbers (auto-mentioned in rules)")]
-        [Min(0)][SerializeField] private int baseDamage;   // Deal X
-        [Min(0)][SerializeField] private int baseBlock;    // Gain X Block
-        [Min(0)][SerializeField] private int scryAmount;   // Scry X
-        [Min(0)][SerializeField] private int drawAmount;   // Draw X
+        [Header("Core Numbers")]
+        [Min(0)][SerializeField] private int baseDamage;
+        [Min(0)][SerializeField] private int baseBlock;
+        [Min(0)][SerializeField] private int scryAmount;
+        [Min(0)][SerializeField] private int drawAmount;
 
         [Header("Flags")]
         [SerializeField] private bool exhaustAfterPlay;
         [SerializeField] private bool retainInHand;
 
-        // ---------------- DESIGNER-FACING EFFECTS ----------------
         [Header("Designer Effects (readable)")]
         [SerializeField] private List<DesignerEffectRow> designerEffects = new();
+        [TextArea(2, 6)][SerializeField] private string rulesTextOverride;
 
-        [Tooltip("Optional override. If empty, we auto-compose from fields + designer effects.")]
-        [TextArea(2, 6)]
-        [SerializeField] private string rulesTextOverride;
-
-        // ---------------- MECHANICAL EFFECTS ----------------
         [Header("Mechanics (Advanced) — resolver processes in order")]
         [SerializeField] private List<CardEffectDef> effects = new();
 
@@ -52,7 +46,6 @@ namespace WH.Gameplay.Cards
         [SerializeField] private Color baseTint = Color.white;
         [Range(0, 1)][SerializeField] private float overlayOpacity = 0.6f;
 
-        // ---------------- PUBLIC API ----------------
         public string Id => id;
         public string DisplayName => displayName;
         public CardFamily Family => family;
@@ -66,27 +59,23 @@ namespace WH.Gameplay.Cards
         public bool ExhaustAfterPlay => exhaustAfterPlay;
         public bool RetainInHand => retainInHand;
         public IReadOnlyList<CardEffectDef> Effects => effects;
-        // True if this card should never be playable (Wound, etc.)
+        // near the other public getters
+        public IReadOnlyList<DesignerEffectRow> DesignerEffects => designerEffects;
+
+        public bool IsCurse => rarity == CardRarity.Curse;
+
         public bool IsUnplayable
         {
             get
             {
-                // Advanced effects list
                 if (effects != null)
-                {
                     for (int i = 0; i < effects.Count; i++)
                         if (effects[i].type == CardEffectType.Custom && effects[i].value == CardCustomOp.Unplayable)
                             return true;
-                }
-
-                // Designer effects list
                 if (designerEffects != null)
-                {
                     for (int i = 0; i < designerEffects.Count; i++)
                         if (designerEffects[i].customOp == DesignerCustomOp.Unplayable)
                             return true;
-                }
-
                 return false;
             }
         }
@@ -98,30 +87,20 @@ namespace WH.Gameplay.Cards
         public Color BaseTint => baseTint;
         public float OverlayOpacity => overlayOpacity;
 
-        /// <summary>Formatted rules line for UI.</summary>
         public string RulesLine => ComposeRulesLine();
 
-        // -------- Designer helpers --------
         [Serializable]
         public struct DesignerEffectRow
         {
-            [Tooltip("Readable custom op (maps to CardCustomOp).")]
             public DesignerCustomOp customOp;
-
-            [Tooltip("Primary number this row uses (e.g., stacks, HP loss).")]
             public int number;
-
-            [Tooltip("Optional extra note. Use {X} to inject the number.")]
             [TextArea(1, 3)] public string note;
-
-            [Tooltip("If true, include in generated Rules text.")]
             public bool showInRules;
 
             public DesignerEffectRow(DesignerCustomOp op, int n = 0, string note = "", bool show = true)
             { customOp = op; number = n; this.note = note; showInRules = show; }
         }
 
-        /// <summary>Readable enum for designers; mirrors CardCustomOp values.</summary>
         public enum DesignerCustomOp
         {
             None = 0,
@@ -139,8 +118,6 @@ namespace WH.Gameplay.Cards
                 return rulesTextOverride.Trim();
 
             var sb = new StringBuilder(64);
-
-            // Numbers-first phrasing
             if (baseDamage > 0) sb.Append($"Deal {baseDamage}. ");
             if (baseBlock > 0) sb.Append($"Gain {baseBlock} Block. ");
             if (drawAmount > 0) sb.Append($"Draw {drawAmount}. ");
@@ -165,7 +142,6 @@ namespace WH.Gameplay.Cards
                 case DesignerCustomOp.EndTurnLoseHp: return $"End of turn: lose {Mathf.Max(1, row.number)} HP. ";
                 case DesignerCustomOp.BleedBonusNext: return $"Next time you apply Bleed this combat, +{Mathf.Max(1, row.number)} stack. ";
                 case DesignerCustomOp.Unplayable: return "Unplayable. ";
-                default: break;
             }
             if (!string.IsNullOrWhiteSpace(row.note))
                 return row.note.Replace("{X}", row.number.ToString()) + " ";
@@ -187,20 +163,20 @@ namespace WH.Gameplay.Cards
         public override string ToString() => $"{displayName} [{family}/{rarity}] Cost:{costPulse}";
     }
 
-    /// <summary>Helper for UI tints without referencing WH.UI.</summary>
     public static class CardFamilyColors
     {
         public static Color Get(CardFamily f)
         {
             switch (f)
             {
-                case CardFamily.Skin: return new Color32(245, 245, 245, 255); // soft white
-                case CardFamily.Eye: return new Color32(255, 222, 125, 255); // amber
-                default: return new Color32(190, 190, 190, 255); // neutral gray
+                case CardFamily.Skin: return new Color32(245, 245, 245, 255);
+                case CardFamily.Eye: return new Color32(255, 222, 125, 255);
+                default: return new Color32(190, 190, 190, 255);
             }
         }
     }
 }
+
 
 
 

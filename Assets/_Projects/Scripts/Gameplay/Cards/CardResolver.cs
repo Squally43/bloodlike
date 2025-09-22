@@ -93,6 +93,7 @@ namespace WH.Gameplay.Cards
             // 3) Apply the data-driven effects list in order (fine-grained control).
             bool forceExhaust = false;
             bool retainCard = false;
+            ResolveDesignerEffects(card, ref forceExhaust, ref retainCard, scryOutcome);
             ResolveEffects(card, ref forceExhaust, ref retainCard, scryOutcome);
 
             // 4) Post-effects routing directives for the driver.
@@ -181,6 +182,52 @@ namespace WH.Gameplay.Cards
                 }
             }
         }
+        private void ResolveDesignerEffects(CardData card, ref bool forceExhaust, ref bool retainCard, ScryOutcome scryOutcome)
+        {
+            var list = card.DesignerEffects;
+            if (list == null) return;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                switch (list[i].customOp)
+                {
+                    case CardData.DesignerCustomOp.RevealIntent:
+                        OnRevealEnemyIntent?.Invoke();
+                        Info("Reveal enemy intent.");
+                        break;
+
+                    case CardData.DesignerCustomOp.MarkEnemyEye:
+                        OnMarkEnemy?.Invoke(BodyTag.Eye);
+                        Info("Mark Enemy: Eye.");
+                        break;
+
+                    case CardData.DesignerCustomOp.ExhaustOneCurseFromHand:
+                        {
+                            bool exhausted = OnRequestExhaustCurseInHand?.Invoke() ?? false;
+                            Info(exhausted ? "Stitch: exhausted a Curse from hand." : "Stitch: no Curse in hand to exhaust.");
+                            break;
+                        }
+
+                    case CardData.DesignerCustomOp.EndTurnLoseHp:
+                        // Driver handles this via advanced effects scan; designer-row is for readability/logs.
+                        Info($"End-of-turn trigger armed (designer): lose {Mathf.Max(1, list[i].number)} HP if this remains in hand.");
+                        break;
+
+                    case CardData.DesignerCustomOp.BleedBonusNext:
+                        _bleedBonusNextStacks += Mathf.Max(1, list[i].number);
+                        Info($"Clot Shield primed (designer): next Bleed +{_bleedBonusNextStacks}.");
+                        break;
+
+                    case CardData.DesignerCustomOp.Unplayable:
+                        // Gate is handled by CardData.IsUnplayable earlier; nothing to do here.
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
 
         // =====================================================================
         //                           CUSTOM OPS

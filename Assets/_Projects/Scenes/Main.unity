@@ -2175,6 +2175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 879132060}
   - component: {fileID: 879132061}
+  - component: {fileID: 879132062}
   m_Layer: 0
   m_Name: Sys_Mark
   m_TagString: Untagged
@@ -2209,6 +2210,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b290b41541beb9a42af6c007ee1c236a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Systems.MarkController
+--- !u!114 &879132062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879132059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37292b7c98e235548bc252bd97aee7b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Systems.ResolverToMarksBridge
+  _marks: {fileID: 879132061}
+  _log: 1
 --- !u!1 &1002272989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,11 +3674,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: WH.UI::WH.Gameplay.Systems.RewardPicker
   _catalog: {fileID: 11400000, guid: f5be5abbca9e0d449b1b4cf8ab5f7aa3, type: 2}
+  _config: {fileID: 11400000, guid: 565d2e02233dfe040a8455b87987587e, type: 2}
   _handRoot: {fileID: 1598796974}
   _handLayout: {fileID: 1598796977}
   _dealDiscard: {fileID: 1598796976}
   _cardPrefab: {fileID: 2672496079643464883, guid: 57c6a28d868459449aa4021fd33ca77b, type: 3}
   _spawnStagger: 1
+  _glitchTint: {fileID: 0}
 --- !u!114 &1598796976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4029,14 +4046,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03688cec5beb82419ba1a82fe5bd82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Systems.HarvestGlue
-  _turns: {fileID: 0}
   _marks: {fileID: 879132061}
   _harvest: {fileID: 1864745264}
   _pickerComponent: {fileID: 1598796975}
-  _harvestOverlay: {fileID: 0}
+  _overlay: {fileID: 0}
   _catalog: {fileID: 11400000, guid: f5be5abbca9e0d449b1b4cf8ab5f7aa3, type: 2}
-  _deckDriver: {fileID: 1028785826}
+  _config: {fileID: 11400000, guid: 565d2e02233dfe040a8455b87987587e, type: 2}
   _deckReceiver: {fileID: 1613901486}
+  _hideWhileHarvest: []
   _log: 1
 --- !u!114 &1864745264
 MonoBehaviour:
@@ -4051,6 +4068,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Systems.HarvestController
   _qte: {fileID: 124941745}
+  _selectionPanel: {fileID: 0}
+  _btnSkin: {fileID: 0}
+  _btnEye: {fileID: 0}
+  enableKeybinds: 1
+  keySkin: 49
+  keyEye: 50
 --- !u!1 &1931140849
 GameObject:
   m_ObjectHideFlags: 0
