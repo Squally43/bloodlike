@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a90f79919521aa4fbca60338ccc21c6, type: 3}
+  m_Name: SO_PosterizeConfig_Default
+  m_EditorClassIdentifier: Assembly-CSharp::WH.Core.SO_PosterizeConfig
+  levels: 5
+  ditherAmp: 0.15
+  contrast: 1
+  saturation: 1
+  gamma: 1
+  ditherTex: {fileID: 2800000, guid: 4253a309e3dda664892d987dc928bca0, type: 3}

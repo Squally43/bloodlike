@@ -215,6 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: WH.Gameplay::WH.Gameplay.Systems.FlowController
   _turnManager: {fileID: 37244725}
   _pulse: {fileID: 581394965}
+  _harvestGlue: {fileID: 0}
+  _harvestOverlay: {fileID: 0}
   testEnemy: {fileID: 11400000, guid: 06861527c8658b742ac9220f628bc195, type: 2}
 --- !u!114 &525502461
 MonoBehaviour:

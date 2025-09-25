@@ -82,11 +82,17 @@ namespace WH.UI
 
         void OnCardHoverChanged(CardFxController fx, bool isHovered)
         {
-            // Find index once; we rely on sibling order in _cards list
+            if (fx == null) return;
             var rt = fx.transform as RectTransform;
-            _hoveredIndex = isHovered ? _cards.IndexOf(rt) : (_hoveredIndex == _cards.IndexOf(rt) ? -1 : _hoveredIndex);
+            if (rt == null) return;
+
+            int idx = _cards.IndexOf(rt);
+            if (idx < 0) { ApplyLayout(); return; } // card not tracked anymore
+
+            _hoveredIndex = isHovered ? idx : (_hoveredIndex == idx ? -1 : _hoveredIndex);
             ApplyLayout();
         }
+
 
         void UnsubscribeAll()
         {

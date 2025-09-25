@@ -3,11 +3,39 @@
   "WorkspaceRootPath": "D:\\Unity Projects\\Bloodlike Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|d:\\unity projects\\bloodlike project\\assets\\_projects\\scripts\\gameplay\\systems\\marking\\markcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\systems\\marking\\markcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|d:\\unity projects\\bloodlike project\\assets\\_projects\\scripts\\graphics\\post\\wh_posterize_fullscreen.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|solutionrelative:assets\\_projects\\scripts\\graphics\\post\\wh_posterize_fullscreen.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|d:\\unity projects\\bloodlike project\\assets\\_projects\\scripts\\gameplay\\deck\\decktestdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\graphics\\post\\posterizeblit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|solutionrelative:assets\\_projects\\scripts\\graphics\\post\\posterizeblit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|d:\\unity projects\\bloodlike project\\assets\\_projects\\scripts\\graphics\\post\\posterizefeature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|solutionrelative:assets\\_projects\\scripts\\graphics\\post\\posterizefeature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\graphics\\post\\posterizeinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|solutionrelative:assets\\_projects\\scripts\\graphics\\post\\posterizeinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\graphics\\post\\so_posterizeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|solutionrelative:assets\\_projects\\scripts\\graphics\\post\\so_posterizeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\PosterizeBlit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\_Projects\\Scripts\\Graphics\\PosterizeBlit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\ui\\rewardpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|solutionrelative:assets\\_projects\\scripts\\ui\\rewardpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\ui\\handlayoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|solutionrelative:assets\\_projects\\scripts\\ui\\handlayoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\deck\\decktestdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\deck\\decktestdriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,12 +43,20 @@
       "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\systems\\harvest\\harvestglue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|d:\\unity projects\\bloodlike project\\assets\\_projects\\scripts\\gameplay\\systems\\marking\\resolvertomarksbridge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\systems\\marking\\resolvertomarksbridge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\cards\\cardresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\cards\\cardresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|d:\\unity projects\\bloodlike project\\assets\\_projects\\scripts\\ui\\rewardpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|solutionrelative:assets\\_projects\\scripts\\ui\\rewardpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\cards\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\cards\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\systems\\marking\\markcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\systems\\marking\\markcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\systems\\marking\\resolvertomarksbridge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\systems\\marking\\resolvertomarksbridge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{065F72F1-E38B-50AC-807A-6F50D38968B7}|Assembly-CSharp.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\config\\buildconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,20 +79,12 @@
       "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\deck\\icurrentdeckprobe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\cards\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\cards\\carddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\cards\\cardcatalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\cards\\cardcatalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6A92508E-3C9E-CB29-9256-AAB8811983F4}|WH.Core.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\core\\gamesignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6A92508E-3C9E-CB29-9256-AAB8811983F4}|WH.Core.csproj|solutionrelative:assets\\_projects\\scripts\\core\\gamesignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\gameplay\\cards\\cardresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B4D7775-5AB6-E297-0204-ABC9E04656E5}|WH.Gameplay.csproj|solutionrelative:assets\\_projects\\scripts\\gameplay\\cards\\cardresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\ui\\battle\\battlehud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -117,10 +145,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity Projects\\Bloodlike Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@a0b8019ed083\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@a0b8019ed083\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\ui\\handlayoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|solutionrelative:assets\\_projects\\scripts\\ui\\handlayoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5036638E-729C-1D19-23D5-F3246871E3D2}|WH.UI.csproj|D:\\Unity Projects\\Bloodlike Project\\assets\\_projects\\scripts\\ui\\cardvisualstyle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -206,37 +230,109 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DeckTestDriver.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
-              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
-              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
-              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAApwFsAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T14:43:21.314Z",
+              "DocumentIndex": 0,
+              "Title": "WH_Posterize_Fullscreen.shader",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\WH_Posterize_Fullscreen.shader",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Graphics\\Post\\WH_Posterize_Fullscreen.shader",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\WH_Posterize_Fullscreen.shader",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Graphics\\Post\\WH_Posterize_Fullscreen.shader",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAcwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-09-25T10:18:58.035Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MarkController.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
-              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
-              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
-              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAcwDIAAAA9AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PosterizeFeature.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeFeature.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeFeature.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeFeature.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeFeature.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAcwFQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T14:35:05.392Z",
+              "WhenOpened": "2025-09-25T10:03:04.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PosterizeBlit.shader",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeBlit.shader",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeBlit.shader",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeBlit.shader",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeBlit.shader",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-09-25T10:00:10.983Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "PosterizeInstaller.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeInstaller.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeInstaller.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeInstaller.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Graphics\\Post\\PosterizeInstaller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T01:12:30.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SO_PosterizeConfig.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\SO_PosterizeConfig.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Graphics\\Post\\SO_PosterizeConfig.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\Post\\SO_PosterizeConfig.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Graphics\\Post\\SO_PosterizeConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T01:12:02.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PosterizeBlit.shader",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\PosterizeBlit.shader",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Graphics\\PosterizeBlit.shader",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Graphics\\PosterizeBlit.shader",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Graphics\\PosterizeBlit.shader",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-09-25T01:03:54.377Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DeckTestDriver.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\DeckTestDriver.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAApwEcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:43:21.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MarkController.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\MarkController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T14:35:05.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "ResolverToMarksBridge.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\ResolverToMarksBridge.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\ResolverToMarksBridge.cs",
@@ -244,36 +340,11 @@
               "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Marking\\ResolverToMarksBridge.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAA0wBQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T14:16:59.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-22T14:16:59.586Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IDeckMutationQueue.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
-              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
-              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
-              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T13:19:31.328Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ICurrentDeckProbe.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
-              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
-              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
-              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T13:18:59.045Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "CardView.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\Battle\\CardView.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\Battle\\CardView.cs",
@@ -285,20 +356,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "CardData.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
               "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
               "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardData.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAcwIEAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAiwD0AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T16:47:32.119Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-16T16:47:32.119Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "CameraDirector.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\Camera\\CameraDirector.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\Camera\\CameraDirector.cs",
@@ -310,20 +380,79 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "HarvestGlue.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Harvest\\HarvestGlue.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Harvest\\HarvestGlue.cs",
               "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Harvest\\HarvestGlue.cs",
               "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Harvest\\HarvestGlue.cs",
-              "ViewState": "AgIAAPQAAAAAAAAAAAAQwPwAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAANcAAAAAAAAAAAAAAKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T15:18:58.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-20T15:18:58.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CardResolver.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAcwOUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T22:58:35.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RewardPicker.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAiwDAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T17:30:10.878Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "HandLayoutController.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAcwF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T22:09:38.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ICurrentDeckProbe.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\ICurrentDeckProbe.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:18:59.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IDeckMutationQueue.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
+              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
+              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
+              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Deck\\IDeckMutationQueue.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T13:19:31.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "HarvestController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Harvest\\HarvestController.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\Harvest\\HarvestController.cs",
@@ -335,20 +464,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RewardPicker.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
-              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
-              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
-              "RelativeToolTip": "Assets\\_Projects\\Scripts\\UI\\RewardPicker.cs",
-              "ViewState": "AgIAAMcAAAAAAAAAAAAcwNYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T17:30:10.878Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
               "Title": "BuildConfig.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Config\\BuildConfig.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Config\\BuildConfig.cs",
@@ -360,7 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 15,
               "Title": "IRewardPicker.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\IRewardPicker.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\IRewardPicker.cs",
@@ -372,19 +488,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CardResolver.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
-              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
-              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
-              "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardResolver.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAiwFMAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T22:58:35.739Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "EnemyWorldHUD.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\EnemyWorldHUD.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\EnemyWorldHUD.cs",
@@ -396,7 +500,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "GameSignals.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Core\\GameSignals.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Core\\GameSignals.cs",
@@ -408,7 +512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "CardCatalog.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardCatalog.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardCatalog.cs",
@@ -416,12 +520,11 @@
               "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardCatalog.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T10:26:44.598Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-20T10:26:44.598Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 21,
               "Title": "BattleHUD.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\Battle\\BattleHUD.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\Battle\\BattleHUD.cs",
@@ -433,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 25,
               "Title": "Hand.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\Hand.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\Hand.cs",
@@ -445,7 +548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 24,
               "Title": "INextFightQueue.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\INextFightQueue.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\INextFightQueue.cs",
@@ -457,7 +560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 26,
               "Title": "TurnManager.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\TurnManager.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\TurnManager.cs",
@@ -469,7 +572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 30,
               "Title": "SharedTypes.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Common\\SharedTypes.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Common\\SharedTypes.cs",
@@ -481,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 36,
               "Title": "CardVisualStyle.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\CardVisualStyle.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\CardVisualStyle.cs",
@@ -493,7 +596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 29,
               "Title": "CardStyleApplier.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\CardStyleApplier.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\CardStyleApplier.cs",
@@ -505,7 +608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 35,
               "Title": "Lit.shader",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Library\\PackageCache\\com.unity.render-pipelines.universal@a0b8019ed083\\Shaders\\Lit.shader",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@a0b8019ed083\\Shaders\\Lit.shader",
@@ -518,7 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 28,
               "Title": "MarkController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\MarkController.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\MarkController.cs",
@@ -529,7 +632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 54,
               "Title": "WH_UI_HoloFoilPro.shader",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Materials\\Shaders\\WH_UI_HoloFoilPro.shader",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Materials\\Shaders\\WH_UI_HoloFoilPro.shader",
@@ -541,7 +644,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 51,
               "Title": "CardEnums.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardEnums.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardEnums.cs",
@@ -553,7 +656,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 52,
               "Title": "CardEffectDef.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardEffectDef.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardEffectDef.cs",
@@ -565,7 +668,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 31,
               "Title": "CardPresenter.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardPresenter.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardPresenter.cs",
@@ -576,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 32,
               "Title": "Dev_CatalogProbe.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Dev_CatalogProbe.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Dev_CatalogProbe.cs",
@@ -588,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 33,
               "Title": "CardCustomOp.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardCustomOp.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\CardCustomOp.cs",
@@ -600,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 34,
               "Title": "SideCosts.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\SideCosts.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\SideCosts.cs",
@@ -612,7 +715,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 37,
               "Title": "CardFxController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\CardFxController.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\CardFxController.cs",
@@ -624,7 +727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 47,
               "Title": "DiscardPile.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\DiscardPile.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\DiscardPile.cs",
@@ -636,7 +739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 46,
               "Title": "ExhaustPile.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\ExhaustPile.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\ExhaustPile.cs",
@@ -648,7 +751,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 48,
               "Title": "DrawPile.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\DrawPile.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\DrawPile.cs",
@@ -660,19 +763,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "HandLayoutController.cs",
-              "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
-              "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
-              "ToolTip": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
-              "RelativeToolTip": "Assets\\_Projects\\Scripts\\UI\\HandLayoutController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T22:09:38.674Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 38,
               "Title": "DealDiscardController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\UI\\DealDiscardController.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\UI\\DealDiscardController.cs",
@@ -684,7 +775,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 49,
               "Title": "PileBase.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\PileBase.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Cards\\Piles\\PileBase.cs",
@@ -696,7 +787,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 40,
               "Title": "PulseManager.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\PulseManager.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\PulseManager.cs",
@@ -708,7 +799,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 39,
               "Title": "FlowController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\FlowController.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\FlowController.cs",
@@ -720,7 +811,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 41,
               "Title": "SceneLoader.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Core\\SceneLoader.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Core\\SceneLoader.cs",
@@ -732,7 +823,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 42,
               "Title": "CombatantState.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\CombatantState.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\CombatantState.cs",
@@ -744,7 +835,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 45,
               "Title": "StatusEffect.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Statuses\\StatusEffect.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Statuses\\StatusEffect.cs",
@@ -756,7 +847,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 53,
               "Title": "HarvestController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Systems\\HarvestController.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Systems\\HarvestController.cs",
@@ -768,7 +859,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 43,
               "Title": "QTEController.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\QTE\\QTEController.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\QTE\\QTEController.cs",
@@ -776,12 +867,11 @@
               "RelativeToolTip": "Assets\\_Projects\\Scripts\\Gameplay\\QTE\\QTEController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T23:05:20.431Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-16T23:05:20.431Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 44,
               "Title": "EnemyAI.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyAI.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyAI.cs",
@@ -793,7 +883,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 50,
               "Title": "EnemyData.cs",
               "DocumentMoniker": "D:\\Unity Projects\\Bloodlike Project\\Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyData.cs",
               "RelativeDocumentMoniker": "Assets\\_Projects\\Scripts\\Gameplay\\Enemies\\EnemyData.cs",
